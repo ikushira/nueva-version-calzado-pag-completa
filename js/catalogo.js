@@ -4,10 +4,12 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Configuración de catálogos para todas las páginas
   const catalogos = [
-    { id: 'catalogo-hombres', nombre: 'Zapato Hombre', precio: 129900 },
-    { id: 'catalogo-mujeres', nombre: 'Zapato Mujer', precio: 119900 },
-    { id: 'catalogo-colegiales', nombre: 'Zapato Colegial', precio: 99900 },
-    { id: 'catalogo-dotacion', nombre: 'Zapato Dotación', precio: 109900, imagenes: [
+    { id: 'catalogo-hombres', nombre: 'Zapato Hombre', precio: 75000 },
+    { id: 'catalogo-mujeres', nombre: 'Zapato Mujer', precio: 75000, imagenes: [
+      ...Array.from({length: 66}, (_, i) => `assets/img/calzmujeres/m${i+1}.jpeg`)
+    ] },
+    { id: 'catalogo-colegiales', nombre: 'Zapato Colegial', precio: 75000 },
+    { id: 'catalogo-dotacion', nombre: 'Zapato Dotación', precio: 75000, imagenes: [
       'assets/img/dotacion/dot1.webp',
       'assets/img/dotacion/dot2.webp',
       'assets/img/dotacion/dot3.webp',
@@ -16,9 +18,35 @@ document.addEventListener('DOMContentLoaded', function() {
       'assets/img/dotacion/dot6.webp',
       'assets/img/dotacion/dot7.webp',
     ] },
-    { id: 'catalogo-ninas', nombre: 'Zapato Niña', precio: 89900 },
-    { id: 'catalogo-ninos', nombre: 'Zapato Niño', precio: 89900 },
-    { id: 'catalogo-ofertas', nombre: 'Zapato Oferta', precio: 79900 },
+{ id: 'catalogo-ninas', nombre: 'Zapato Niña', precio: 75000, imagenes: [
+  'assets/img/calzninas/n1.jpeg',
+  'assets/img/calzninas/n2.jpeg',
+  'assets/img/calzninas/n3.jpeg',
+  'assets/img/calzninas/n4.jpeg',
+  'assets/img/calzninas/n5.jpeg',
+  'assets/img/calzninas/n6.jpeg',
+  'assets/img/calzninas/n7.jpeg',
+  'assets/img/calzninas/n8.jpeg',
+  'assets/img/calzninas/n9.jpeg',
+  'assets/img/calzninas/n10.jpeg',
+  'assets/img/calzninas/n11.jpeg',
+  'assets/img/calzninas/n12.jpeg',
+] },
+{ id: 'catalogo-ninos', nombre: 'Zapato Niño', precio: 75000, imagenes: [
+  'assets/img/calzninos/n1.jpeg',
+  'assets/img/calzninos/n2.jpeg',
+  'assets/img/calzninos/n3.jpeg',
+  'assets/img/calzninos/n4.jpeg',
+  'assets/img/calzninos/n5.jpeg',
+  'assets/img/calzninos/n6.jpeg',
+  'assets/img/calzninos/n7.jpeg',
+  'assets/img/calzninos/n8.jpeg',
+  'assets/img/calzninos/n9.jpeg',
+  'assets/img/calzninos/n10.jpeg',
+  'assets/img/calzninos/n11.jpeg',
+  'assets/img/calzninos/n12.jpeg',
+] },
+    { id: 'catalogo-ofertas', nombre: 'Zapato Oferta', precio: 75000 },
     { id: 'catalogo-marcas', nombre: 'Marca', precio: null, imagenes: [
       { src: 'assets/img/marcas/newbalance.png', nombre: 'New Balance' },
       { src: 'assets/img/marcas/skechers.png', nombre: 'Skechers' },
@@ -151,6 +179,16 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.target.classList.contains('btn-add-cart')) {
           e.preventDefault();
           alert('Producto añadido al carrito!');
+        }
+        if (e.target.classList.contains('btn-guia-tallas')) {
+          e.preventDefault();
+          var modal = document.getElementById('modal-guia-tallas');
+          if (modal) {
+            modal.style.display = 'flex';
+            document.getElementById('modal-gt-select').value = 'medida';
+            if (typeof mostrarPanelGuiaTallas === 'function') mostrarPanelGuiaTallas('medida');
+            if (typeof cambiarImagenGuiaTallas === 'function') cambiarImagenGuiaTallas('medida');
+          }
         }
       });
     }

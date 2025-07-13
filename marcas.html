@@ -26,7 +26,7 @@
     <div class="logo">MUNDO CALZADO</div>
     <input type="text" class="search-bar" id="main-search" placeholder="¿Qué zapatos estás buscando?">
     <div class="header-actions">
-      <a href="#"><i class="fa-regular fa-user"></i> Iniciar sesión</a>
+      <a href="login.html"><i class="fa-regular fa-user"></i> Iniciar sesión</a>
       <a href="#"><i class="fa-solid fa-cart-shopping"></i> Carrito de compras</a>
     </div>
   </header>
@@ -53,24 +53,13 @@
     <span class="breadcrumb-current">Marcas</span>
   </nav>
   <div class="catalogo-actions">
-    <button class="btn-filtrar-sketch" id="openFiltro">
-      <i class="fa-solid fa-sliders"></i> <span>Filtrar</span>
-    </button>
-    <button class="btn-ordenar-azul" id="ordenarDropdown">
-      <span>Ventas</span> <i class="fa-solid fa-angle-down"></i>
-    </button>
-    <div id="ordenarOptions" class="ordenar-options" style="display:none;">
-      <div class="ordenar-option" data-order="ventas">Ventas</div>
-      <div class="ordenar-option" data-order="precio-bajo">Precio: Bajo a Alto</div>
-      <div class="ordenar-option" data-order="precio-alto">Precio: Alto a Bajo</div>
-      <div class="ordenar-option" data-order="nuevos">Lo más nuevo</div>
-    </div>
+    <!-- Botón Guía de tallas si aplica -->
   </div>
   <!-- Sidebar de filtros estilo bosquejo -->
   <div id="filtroSidebar" class="filtro-sidebar-sketch filtro-sidebar-left">
     <div class="filtro-header-sketch">
       <span><i class="fa-solid fa-bars"></i> Filtros</span>
-      <button class="filtro-close-sketch" id="closeFiltro"><i class="fa-solid fa-xmark"></i></button>
+      <button class="filtro-close-sketch" id="closeFiltro" title="Cerrar filtros"><i class="fa-solid fa-xmark"></i></button>
     </div>
     <div class="filtro-content-sketch">
       <div class="filtro-group-sketch">
@@ -94,7 +83,7 @@
       <hr>
       <div class="filtro-group-sketch">
         <div class="filtro-group-title-sketch" onclick="toggleFiltroSub('categoria')">Categoría <i class="fa-solid fa-angle-down"></i></div>
-        <div class="filtro-group-list-sketch" id="filtro-categoria" style="display:none;">
+        <div class="filtro-group-list-sketch visually-hidden filtro-categoria-list" id="filtro-categoria">
           <label class="filtro-link" data-filtro="Zapatos Mujer"><input type="checkbox"> Zapatos Mujer</label>
           <label class="filtro-link" data-filtro="Zapatos Hombre"><input type="checkbox"> Zapatos Hombre</label>
           <label class="filtro-link" data-filtro="Zapatos Niños"><input type="checkbox"> Zapatos Niños</label>
@@ -105,7 +94,7 @@
       </div>
       <div class="filtro-group-sketch">
         <div class="filtro-group-title-sketch" onclick="toggleFiltroSub('colores')">Colores <i class="fa-solid fa-angle-down"></i></div>
-        <div class="filtro-group-list-sketch" id="filtro-colores" style="display:none; max-height: 160px; overflow-y: auto;">
+        <div class="filtro-group-list-sketch visually-hidden filtro-colores-list" id="filtro-colores">
           <label class="filtro-link" data-filtro="amarillo"><input type="checkbox"> amarillo</label>
           <label class="filtro-link" data-filtro="beige"><input type="checkbox"> beige</label>
           <label class="filtro-link" data-filtro="blanco"><input type="checkbox"> blanco</label>
@@ -121,13 +110,13 @@
       </div>
       <div class="filtro-group-sketch">
         <div class="filtro-group-title-sketch" onclick="toggleFiltroSub('ofertas')">Ofertas <i class="fa-solid fa-angle-down"></i></div>
-        <div class="filtro-group-list-sketch" id="filtro-ofertas" style="display:none;">
+        <div class="filtro-group-list-sketch visually-hidden filtro-ofertas-list" id="filtro-ofertas">
           <label class="filtro-link" data-filtro="ofertas"><input type="checkbox"> ofertas</label>
         </div>
       </div>
     </div>
   </div>
-  <div id="filtroOverlay" class="filtro-overlay-sketch" style="display:none;"></div>
+  <div id="filtroOverlay" class="filtro-overlay-sketch visually-hidden"></div>
 
 
 

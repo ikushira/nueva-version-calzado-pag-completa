@@ -4,23 +4,22 @@
 document.addEventListener('DOMContentLoaded', function() {
     
     // ===============================
-    // CARRUSEL BANNER PRINCIPAL
+    // CARRUSEL BANNER PRINCIPAL (DINÁMICO)
     // ===============================
-    const bannerSlides = document.querySelectorAll('.banner-slide');
-    const bannerIndicators = document.querySelectorAll('.banner-indicator');
+    const bannerCarousel = document.getElementById('banner-carousel');
+    const bannerIndicatorsContainer = document.getElementById('banner-carousel-indicators');
     const bannerPrevBtn = document.getElementById('banner-carousel-prev');
     const bannerNextBtn = document.getElementById('banner-carousel-next');
+    let bannerSlides = [];
+    let bannerIndicators = [];
     let bannerCurrentIndex = 0;
+    let bannerInterval = null;
 
     function showBannerSlide(index) {
-        // Ocultar todos los slides
         bannerSlides.forEach(slide => slide.classList.remove('active'));
         bannerIndicators.forEach(indicator => indicator.classList.remove('active'));
-        
-        // Mostrar slide actual
         bannerSlides[index].classList.add('active');
         bannerIndicators[index].classList.add('active');
-        
         bannerCurrentIndex = index;
     }
 
@@ -34,16 +33,61 @@ document.addEventListener('DOMContentLoaded', function() {
         showBannerSlide(prevIndex);
     }
 
-    // Event listeners para banner
-    if (bannerNextBtn) bannerNextBtn.addEventListener('click', nextBannerSlide);
-    if (bannerPrevBtn) bannerPrevBtn.addEventListener('click', prevBannerSlide);
-    
-    bannerIndicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => showBannerSlide(index));
-    });
+    function startBannerAutoplay() {
+        if (bannerInterval) clearInterval(bannerInterval);
+        bannerInterval = setInterval(nextBannerSlide, 5000);
+    }
 
-    // Auto-play del banner (opcional)
-    setInterval(nextBannerSlide, 5000);
+    function stopBannerAutoplay() {
+        if (bannerInterval) clearInterval(bannerInterval);
+    }
+
+    // Cargar imágenes del carrusel desde JSON
+    fetch('assets/img/carrusel1/imagenes-carrusel1.json')
+        .then(response => response.json())
+        .then(imagenes => {
+            // Limpiar slides e indicadores existentes
+            bannerCarousel.innerHTML = '';
+            bannerIndicatorsContainer.innerHTML = '';
+
+            // Crear slides e indicadores dinámicamente
+            imagenes.forEach((src, idx) => {
+                const slide = document.createElement('div');
+                slide.className = 'banner-slide';
+                if (idx === 0) slide.classList.add('active');
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = `Banner ${idx + 1}`;
+                img.loading = 'lazy';
+                slide.appendChild(img);
+                bannerCarousel.appendChild(slide);
+
+                const indicator = document.createElement('span');
+                indicator.className = 'banner-indicator';
+                if (idx === 0) indicator.classList.add('active');
+                indicator.addEventListener('click', () => showBannerSlide(idx));
+                bannerIndicatorsContainer.appendChild(indicator);
+            });
+
+            // Actualizar referencias
+            bannerSlides = Array.from(document.querySelectorAll('.banner-slide'));
+            bannerIndicators = Array.from(document.querySelectorAll('.banner-indicator'));
+            bannerCurrentIndex = 0;
+
+            // Listeners
+            if (bannerNextBtn) bannerNextBtn.addEventListener('click', nextBannerSlide);
+            if (bannerPrevBtn) bannerPrevBtn.addEventListener('click', prevBannerSlide);
+
+            // Autoplay
+            startBannerAutoplay();
+
+            // Pausar autoplay al hacer hover
+            bannerCarousel.addEventListener('mouseenter', stopBannerAutoplay);
+            bannerCarousel.addEventListener('mouseleave', startBannerAutoplay);
+        })
+        .catch(err => {
+            console.error('Error cargando imágenes del carrusel principal:', err);
+        });
 
     // ===============================
     // CARRUSEL DE PRODUCTOS

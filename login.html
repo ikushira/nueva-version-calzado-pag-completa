@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar sesión | Mundo Calzado</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body { font-family: 'Inter', Arial, sans-serif; background: #f4f7fa; }
+    .login-container { max-width: 400px; margin: 40px auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 32px; }
+    .login-container h2 { text-align: center; margin-bottom: 24px; color: #1a355e; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; margin-bottom: 6px; color: #1a355e; }
+    .form-group input { width: 100%; padding: 10px; border: 1px solid #bfcbe3; border-radius: 4px; }
+    .btn { width: 100%; padding: 12px; background: #1a355e; color: #fff; border: none; border-radius: 4px; font-weight: 600; cursor: pointer; margin-top: 8px; }
+    .toggle-link { display: block; text-align: center; margin: 16px 0 0; color: #1a355e; cursor: pointer; text-decoration: underline; }
+    .error-msg { color: #d32f2f; text-align: center; margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2 id="form-title">Iniciar sesión</h2>
+    <form id="login-form">
+      <div class="form-group">
+        <label for="login-email">Correo electrónico</label>
+        <input type="email" id="login-email" required>
+      </div>
+      <div class="form-group">
+        <label for="login-password">Contraseña</label>
+        <input type="password" id="login-password" required>
+      </div>
+      <button type="submit" class="btn">Entrar</button>
+      <span class="toggle-link" id="show-register">¿No tienes cuenta? Regístrate</span>
+    </form>
+    <form id="register-form" style="display:none;">
+      <div class="form-group">
+        <label for="reg-name">Nombre completo</label>
+        <input type="text" id="reg-name" required>
+      </div>
+      <div class="form-group">
+        <label for="reg-email">Correo electrónico</label>
+        <input type="email" id="reg-email" required>
+      </div>
+      <div class="form-group">
+        <label for="reg-password">Contraseña</label>
+        <input type="password" id="reg-password" required>
+      </div>
+      <div class="form-group">
+        <label for="reg-confirm">Confirmar contraseña</label>
+        <input type="password" id="reg-confirm" required>
+      </div>
+      <button type="submit" class="btn">Registrarse</button>
+      <span class="toggle-link" id="show-login">¿Ya tienes cuenta? Inicia sesión</span>
+    </form>
+    <div id="error-msg" class="error-msg"></div>
+  </div>
+  <script>
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
+    const showRegister = document.getElementById('show-register');
+    const showLogin = document.getElementById('show-login');
+    const formTitle = document.getElementById('form-title');
+    const errorMsg = document.getElementById('error-msg');
+
+    showRegister.onclick = function() {
+      loginForm.style.display = 'none';
+      registerForm.style.display = 'block';
+      formTitle.textContent = 'Registro de nuevo cliente';
+      errorMsg.textContent = '';
+    };
+    showLogin.onclick = function() {
+      registerForm.style.display = 'none';
+      loginForm.style.display = 'block';
+      formTitle.textContent = 'Iniciar sesión';
+      errorMsg.textContent = '';
+    };
+
+    // Función para obtener usuarios del localStorage
+    function getUsers() {
+      const users = localStorage.getItem('usuarios');
+      return users ? JSON.parse(users) : [];
+    }
+
+    // Función para guardar usuarios en localStorage
+    function saveUsers(users) {
+      localStorage.setItem('usuarios', JSON.stringify(users));
+    }
+
+    // Registro de usuario
+    registerForm.onsubmit = function(e) {
+      e.preventDefault();
+      const name = document.getElementById('reg-name').value.trim();
+      const email = document.getElementById('reg-email').value.trim();
+      const pass = document.getElementById('reg-password').value;
+      const confirm = document.getElementById('reg-confirm').value;
+      if (pass !== confirm) {
+        errorMsg.textContent = 'Las contraseñas no coinciden.';
+        return;
+      }
+      if (!name || !email || !pass) {
+        errorMsg.textContent = 'Por favor, completa todos los campos.';
+        return;
+      }
+      const users = getUsers();
+      if (users.some(u => u.email === email)) {
+        errorMsg.textContent = 'El correo ya está registrado.';
+        return;
+      }
+      users.push({ name, email, pass });
+      saveUsers(users);
+      errorMsg.style.color = '#388e3c';
+      errorMsg.textContent = '¡Registro exitoso! Ahora puedes iniciar sesión.';
+      setTimeout(() => {
+        showLogin.onclick();
+        errorMsg.style.color = '';
+      }, 1500);
+    };
+
+    // Inicio de sesión
+    loginForm.onsubmit = function(e) {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value.trim();
+      const pass = document.getElementById('login-password').value;
+      const users = getUsers();
+      const user = users.find(u => u.email === email && u.pass === pass);
+      if (user) {
+        errorMsg.style.color = '#388e3c';
+        errorMsg.textContent = '¡Inicio de sesión exitoso!';
+        // Aquí puedes redirigir o mostrar contenido exclusivo
+      } else {
+        errorMsg.style.color = '';
+        errorMsg.textContent = 'Correo o contraseña incorrectos.';
+      }
+    };
+  </script>
+</body>
+</html>

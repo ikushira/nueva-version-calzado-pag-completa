@@ -29,7 +29,7 @@
     <div class="logo">MUNDO CALZADO</div>
     <input type="text" class="search-bar" id="main-search" placeholder="¿Qué zapatos estás buscando?">
     <div class="header-actions">
-      <a href="#"><i class="fa-regular fa-user"></i> Iniciar sesión</a>
+      <a href="login.html"><i class="fa-regular fa-user"></i> Iniciar sesión</a>
       <a href="#"><i class="fa-solid fa-cart-shopping"></i> Carrito de compras</a>
     </div>
   </header>
@@ -56,22 +56,12 @@
     <div class="banner-carousel-container">
       <button class="banner-carousel-btn left" id="banner-carousel-prev" title="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
       <div class="banner-carousel" id="banner-carousel">
-        <div class="banner-slide active">
-          <img src="assets/img/carrusel1.jpg" alt="Banner 1">
-        </div>
-        <div class="banner-slide">
-          <img src="assets/img/carrusel2.jpg" alt="Banner 2">
-        </div>
-        <div class="banner-slide">
-          <img src="assets/img/banner-calzado.jpg" alt="Banner Calzado">
-        </div>
+        <!-- Slides del carrusel principal se generan dinámicamente por JS -->
       </div>
       <button class="banner-carousel-btn right" id="banner-carousel-next" title="Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
     </div>
     <div class="banner-carousel-indicators" id="banner-carousel-indicators">
-      <span class="banner-indicator active"></span>
-      <span class="banner-indicator"></span>
-      <span class="banner-indicator"></span>
+      <!-- Indicadores del carrusel principal se generan dinámicamente por JS -->
     </div>
   </section>
 
@@ -228,6 +218,8 @@
     <p class="copyright">&copy; 2025 Mundo Calzado. Todos los derechos reservados.</p>
   </footer>
 
+  <link rel="stylesheet" href="css/guia-tallas-modal.css">
+  <script src="js/guia-tallas-modal.js"></script>
   <!-- Script para funcionalidades JS -->
   <script src="js/script.js"></script>
   <script src="js/novedades-carousel.js"></script>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir Dirección - Mundo Calzado</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/novedades-carousel.css">
+    <link rel="stylesheet" href="css/direccion_cuenta.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Barra superior con promoción y accesos rápidos -->
+    <div class="top-bar blue-theme">
+      <div class="promo">
+        <span class="promo-strong">30% OFF 2DO PAR</span>
+        <span class="promo-timer"><i class="fa-regular fa-clock"></i> 34:09 ÚLTIMAS HORAS</span>
+      </div>
+      <div class="top-links">
+        <a href="#"><i class="fa-regular fa-envelope"></i> Contáctanos</a>
+        <a href="#"><i class="fa-solid fa-truck"></i> Sigue tu pedido</a>
+        <a href="#"><i class="fa-solid fa-location-dot"></i> Nuestras tiendas</a>
+        <a href="#"><i class="fa-solid fa-leaf"></i> Sostenibilidad</a>
+      </div>
+    </div>
+    <!-- Encabezado principal con logo, buscador y accesos rápidos -->
+    <header class="main-header blue-theme">
+      <div class="logo">MUNDO CALZADO</div>
+      <input type="text" class="search-bar" id="main-search" placeholder="¿Qué zapatos estás buscando?">
+      <div class="header-actions">
+        <a href="login.html"><i class="fa-regular fa-user"></i> Iniciar sesión</a>
+        <a href="#"><i class="fa-solid fa-cart-shopping"></i> Carrito de compras</a>
+      </div>
+    </header>
+    <!-- Menú de navegación principal -->
+    <nav class="main-nav blue-theme">
+      <ul>
+        <li><a href="nuevos.html">Nuevos</a></li>
+        <li><a href="mujeres.html">Mujeres</a></li>
+        <li><a href="hombres.html">Hombres</a></li>
+        <li><a href="ninas.html">Niñas</a></li>
+        <li><a href="ninos.html">Niños</a></li>
+        <li><a href="colegiales.html">Colegiales</a></li>
+        <li><a href="dotacion.html">Dotación</a></li>
+        <li><a href="accesorios.html">Accesorios</a></li>
+        <li><a href="marcas.html">Marcas</a></li>
+        <li><a href="#" class="ofertas">Ofertas</a></li>
+      </ul>
+    </nav>
+    <div class="cuenta-container" style="display:flex; gap:40px; margin-top:32px;">
+        <aside class="menu-cuenta">
+            <ul>
+                <li><a href="cuenta.html" style="color:inherit; text-decoration:none;">Perfil</a></li>
+                <li class="active">Direcciones</li>
+                <li><a href="#" style="color:inherit; text-decoration:none;">Pedidos</a></li>
+                <li><a href="#" style="color:inherit; text-decoration:none;">Tarjetas de crédito</a></li>
+                <li><a href="#" style="color:inherit; text-decoration:none;">Autenticación</a></li>
+                <li><a href="#" style="color:inherit; text-decoration:none;">Salir</a></li>
+            </ul>
+        </aside>
+        <main style="flex:1;">
+            <a href="cuenta.html" class="direccion-volver"><i class="fa fa-arrow-left"></i> DIRECCIONES</a>
+            <div class="direccion-titulo">Añadir Dirección</div>
+            <form class="direccion-form direccion-container">
+                <label for="pais">País</label>
+                <select id="pais" name="pais">
+                    <option>Colombia</option>
+                </select>
+                <label for="departamento">Departamento</label>
+                <select id="departamento" name="departamento">
+                  <option value="Amazonas">Amazonas</option>
+                  <option value="Antioquia">Antioquia</option>
+                  <option value="Arauca">Arauca</option>
+                  <option value="Atlántico">Atlántico</option>
+                  <option value="Bolívar">Bolívar</option>
+                  <option value="Boyacá">Boyacá</option>
+                  <option value="Caldas">Caldas</option>
+                  <option value="Caquetá">Caquetá</option>
+                  <option value="Casanare">Casanare</option>
+                  <option value="Cauca">Cauca</option>
+                  <option value="Cesar">Cesar</option>
+                  <option value="Chocó">Chocó</option>
+                  <option value="Córdoba">Córdoba</option>
+                  <option value="Cundinamarca">Cundinamarca</option>
+                  <option value="Guainía">Guainía</option>
+                  <option value="Guaviare">Guaviare</option>
+                  <option value="Huila">Huila</option>
+                  <option value="La Guajira">La Guajira</option>
+                  <option value="Magdalena">Magdalena</option>
+                  <option value="Meta">Meta</option>
+                  <option value="Nariño">Nariño</option>
+                  <option value="Norte de Santander">Norte de Santander</option>
+                  <option value="Putumayo">Putumayo</option>
+                  <option value="Quindío">Quindío</option>
+                  <option value="Risaralda">Risaralda</option>
+                  <option value="San Andrés y Providencia">San Andrés y Providencia</option>
+                  <option value="Santander">Santander</option>
+                  <option value="Sucre">Sucre</option>
+                  <option value="Tolima">Tolima</option>
+                  <option value="Valle del Cauca">Valle del Cauca</option>
+                  <option value="Vaupés">Vaupés</option>
+                  <option value="Vichada">Vichada</option>
+                </select>
+                <label for="municipio">Municipio</label>
+                <select id="municipio" name="municipio">
+                  <option value="">Seleccione un municipio</option>
+                </select>
+                <label for="calle">Calle</label>
+                <input type="text" id="calle" name="calle" placeholder="">
+                <label for="info">Información adicional (ej.: apto. 201)</label>
+                <input type="text" id="info" name="info" placeholder="">
+                <label for="barrio">Barrio</label>
+                <input type="text" id="barrio" name="barrio" placeholder="">
+                <label for="destinatario">Destinatario</label>
+                <input type="text" id="destinatario" name="destinatario" placeholder="">
+                <button type="submit">AÑADIR DIRECCIÓN</button>
+            </form>
+        </main>
+    </div>
+    <footer class="footer">
+      <div class="footer-main">
+        <div class="footer-col">
+          <h4>Políticas</h4>
+          <a href="#">Condiciones Promociones vigentes</a>
+          <a href="#">Canjear bonos empresariales</a>
+          <a href="#">Código de ética y buen gobierno</a>
+          <a href="#">Política de cambios y garantías tiendas físicas</a>
+          <a href="#">Política de cambios y garantías tienda online</a>
+          <a href="#">Política de privacidad, tratamiento y protección de datos personales</a>
+        </div>
+        <div class="footer-col">
+          <h4>Descubre Mundo Calzado</h4>
+          <a href="#">¿Quiénes somos?</a>
+          <a href="#">Trabaja con nosotros</a>
+          <a href="#">Encuentra nuestras tiendas</a>
+          <a href="#">Registro de descuento de cumpleaños</a>
+        </div>
+        <div class="footer-col">
+          <h4>Necesitas ayuda</h4>
+          <a href="#">Contáctanos</a>
+          <a href="#">Gestiona tus cambios</a>
+          <a href="#">Portal Autogestión de proveedores</a>
+          <a href="#">Verifica el estado de tu pedido</a>
+          <a href="#">Consulta facturas electrónicas</a>
+        </div>
+        <div class="footer-col footer-social">
+          <h4>Síguenos en nuestras redes:</h4>
+          <div class="social-icons">
+            <a href="#"><img src="assets/img/instagram.svg" alt="Instagram" /></a>
+            <a href="#"><img src="assets/img/facebook.png" alt="Facebook" /></a>
+            <a href="#"><img src="assets/img/whatsapp.svg" alt="WhatsApp" /></a>
+            <a href="#"><img src="assets/img/tiktok.svg" alt="TikTok" /></a>
+          </div>
+          <h4>Medios de pago disponibles:</h4>
+          <div class="payment-icons">
+            <span class="payment-text">Visa • Mastercard • PSE • Efecty • Nequi</span>
+          </div>
+          <h4>Vigilado por:</h4>
+          <span class="super-text">Superintendencia de Industria y Comercio</span>
+        </div>
+      </div>
+      <a href="https://wa.me/57XXXXXXXXXX" class="whatsapp-float" target="_blank" rel="noopener">
+        <img src="assets/img/whatsapp.svg" alt="WhatsApp">
+      </a>
+      <p class="copyright">&copy; 2025 Mundo Calzado. Todos los derechos reservados.</p>
+    </footer>
+    <script src="js/script.js"></script>
+    <script src="js/novedades-carousel.js"></script>
+    <script src="js/busqueda.js"></script>
+    <script>
+// Listado completo de municipios por departamento de Colombia
+const municipiosPorDepartamento = {
+  "Amazonas": ["Leticia", "Puerto Nariño"],
+  "Antioquia": ["Medellín", "Abejorral", "Abriaquí", "Alejandría", "Amagá", "Amalfi", "Andes", "Angelópolis", "Angostura", "Anorí", "Santafé de Antioquia", "Anza", "Apartadó", "Arboletes", "Argelia", "Armenia", "Barbosa", "Bello", "Betania", "Betulia", "Ciudad Bolívar", "Briceño", "Buriticá", "Cáceres", "Caicedo", "Caldas", "Campamento", "Cañasgordas", "Caracolí", "Caramanta", "Carepa", "El Carmen de Viboral", "Carolina", "Caucasia", "Chigorodó", "Cisneros", "Cocorná", "Concepción", "Concordia", "Copacabana", "Dabeiba", "Donmatías", "Ebéjico", "El Bagre", "Entrerríos", "Envigado", "Fredonia", "Frontino", "Giraldo", "Girardota", "Gómez Plata", "Granada", "Guadalupe", "Guarne", "Guatapé", "Heliconia", "Hispania", "Itagüí", "Ituango", "Jardín", "Jericó", "La Ceja", "La Estrella", "La Pintada", "La Unión", "Liborina", "Maceo", "Marinilla", "Montebello", "Murindó", "Mutatá", "Nariño", "Nechí", "Olaya", "Peñol", "Peque", "Pueblorrico", "Puerto Berrío", "Puerto Nare", "Puerto Triunfo", "Remedios", "Retiro", "Rionegro", "Sabanalarga", "Sabaneta", "Salgar", "San Andrés de Cuerquia", "San Carlos", "San Francisco", "San Jerónimo", "San José de la Montaña", "San Juan de Urabá", "San Luis", "San Pedro", "San Pedro de Urabá", "San Rafael", "San Roque", "San Vicente", "Santa Bárbara", "Santa Rosa de Osos", "Santo Domingo", "El Santuario", "Segovia", "Sonsón", "Sopetrán", "Támesis", "Tarazá", "Tarso", "Titiribí", "Toledo", "Turbo", "Uramita", "Urrao", "Valdivia", "Valparaíso", "Vegachí", "Venecia", "Vigía del Fuerte", "Yalí", "Yarumal", "Yolombó", "Yondó", "Zaragoza"],
+  "Arauca": ["Arauca", "Arauquita", "Cravo Norte", "Fortul", "Puerto Rondón", "Saravena", "Tame"],
+  "Atlántico": ["Barranquilla", "Baranoa", "Campo de la Cruz", "Candelaria", "Galapa", "Juan de Acosta", "Luruaco", "Malambo", "Manatí", "Palmar de Varela", "Piojó", "Polonuevo", "Ponedera", "Puerto Colombia", "Repelón", "Sabanagrande", "Sabanalarga", "Santa Lucía", "Santo Tomás", "Soledad", "Suan", "Tubará", "Usiacurí"],
+  "Bolívar": ["Cartagena", "Achí", "Altos del Rosario", "Arenal", "Arjona", "Arroyohondo", "Barranco de Loba", "Calamar", "Cantagallo", "Cicuco", "Córdoba", "Clemencia", "El Guamo", "El Peñón", "Hatillo de Loba", "Magangué", "Mahates", "Margarita", "María la Baja", "Mompós", "Montecristo", "Morales", "Norosí", "Pinillos", "Regidor", "Río Viejo", "San Cristóbal", "San Estanislao", "San Fernando", "San Jacinto", "San Jacinto del Cauca", "San Juan Nepomuceno", "San Martín de Loba", "San Pablo", "Santa Catalina", "Santa Rosa", "Santa Rosa del Sur", "Simití", "Soplaviento", "Talaigua Nuevo", "Tiquisio", "Turbaco", "Turbaná", "Villanueva", "Zambrano"],
+  "Boyacá": ["Tunja", "Almeida", "Aquitania", "Arcabuco", "Belén", "Berbeo", "Betéitiva", "Boavita", "Boyacá", "Briceño", "Buenavista", "Busbanzá", "Caldas", "Campohermoso", "Cerinza", "Chinavita", "Chiquinquirá", "Chiscas", "Chita", "Chitaraque", "Chivatá", "Ciénega", "Cómbita", "Coper", "Corrales", "Covarachía", "Cubará", "Cucaita", "Cuítiva", "Duitama", "El Cocuy", "El Espino", "Firavitoba", "Floresta", "Gachantivá", "Gámeza", "Garagoa", "Guacamayas", "Guateque", "Guayatá", "Güicán", "Iza", "Jenesano", "Jericó", "La Capilla", "La Uvita", "La Victoria", "La Virgen", "Macanal", "Maripí", "Miraflores", "Mongua", "Monguí", "Moniquirá", "Motavita", "Muzo", "Nobsa", "Nuevo Colón", "Oicatá", "Otanche", "Pachavita", "Páez", "Paipa", "Pajarito", "Panqueba", "Pauna", "Paya", "Paz de Río", "Pesca", "Pisba", "Puerto Boyacá", "Quípama", "Ramiriquí", "Ráquira", "Rondón", "Saboyá", "Sáchica", "Samacá", "San Eduardo", "San José de Pare", "San Luis de Gaceno", "San Mateo", "San Miguel de Sema", "San Pablo de Borbur", "Santa María", "Santa Rosa de Viterbo", "Santa Sofía", "Santana", "Sativanorte", "Sativasur", "Siachoque", "Soatá", "Socha", "Socotá", "Sogamoso", "Somondoco", "Sora", "Soracá", "Sotaquirá", "Susacón", "Sutamarchán", "Sutatenza", "Tasco", "Tenza", "Tibaná", "Tibasosa", "Tinjacá", "Tipacoque", "Toca", "Togüí", "Tópaga", "Tota", "Tununguá", "Turmequé", "Tuta", "Tutazá", "Úmbita", "Ventaquemada", "Villa de Leyva", "Viracachá", "Zetaquira"],
+  "Caldas": ["Manizales", "Aguadas", "Anserma", "Aranzá", "Belalcázar", "Chinchiná", "Dosquebradas", "Filadelfia", "La Dorada", "La Merced", "Manzanares", "Marmato", "Marquetalia", "Neira", "Páez", "Palestina", "Pensilvania", "Riosucio", "Salamina", "San Carlos", "San Félix", "San José", "Supía", "Victoria"],
+  "Caquetá": ["Florencia", "Albania", "Belén de los Andaquies", "Cartagena del Chairá", "Curillo", "El Doncello", "El Paujil", "La Montañita", "Milán", "Morelia", "Puerto Rico", "San José del Fragua", "Solano", "Valparaíso"],
+  "Casanare": ["Yopal", "Aguazul", "Chámeza", "Hato Corozal", "La Salina", "Maní", "Monterrey", "Nunchía", "Paz de Ariporo", "Pore", "Recetor", "Sácama", "San Luis de Palenque", "Támara", "Trinidad"],
+  "Cauca": ["Popayán", "Almaguer", "Argelia", "Balboa", "Bolívar", "Cajibío", "Caloto", "El Bordo", "El Tambo", "Florencia", "Guachené", "La Sierra", "La Vega", "Mercaderes", "Miranda", "Paez", "Páez", "Popayán", "Puerto Tejada", "Santander de Quilichao", "Silvia", "Sotara", "Sucre", "Timbío", "Timbiquí", "Toribío", "Villa Rica"],
+  "Cesar": ["Valledupar", "Aguachica", "Agustín Codazzi", "Becerril", "Bosconia", "Chimichagua", "Chiriguaná", "Codazzi", "El Copey", "El Paso", "Gamarra", "La Gloria", "La Jagua de Ibirico", "La Paz", "Manaure", "Pailitas", "Pelaya", "San Alberto", "San Diego", "San Martín", "Tamalameque", "Valledupar", "Villanueva"],
+  "Chocó": ["Quibdó", "Acandí", "Alto Baudó", "Atrato", "Bagadó", "Bahía Solano", "Bajo Baudó", "Bojayá", "Cértegui", "Condoto", "El Cantón del San Pablo", "El Litoral del San Juan", "Istmina", "Jurado", "Lloró", "Medio Atrato", "Medio San Juan", "Nóvita", "Riosucio", "San José del Palmar", "Sipí", "Tadó", "Unión Panamericana"],
+  "Córdoba": ["Montería", "Aguazul", "Albania", "Ayapel", "Cereté", "Chimá", "Chinú", "Ciénaga de Oro", "Coloso", "El Campano", "El Cienaga", "El Porvenir", "La Apartada", "La Doctrina", "La Gloria", "La Mano de Dios", "La Montañita", "La Palma", "La Pila", "La Unión", "Lorica", "Los Córdobas", "Los Garzones", "Moñitos", "Planeta Rica", "Puerto Escondido", "Purísima", "Sahagún", "San Andrés Sotavento", "San Antero", "San Bernardo del Viento", "San Carlos", "San Pelayo", "Santa Cruz de Lorica", "Tierralta", "Tuchín", "Valencia"],
+  "Cundinamarca": ["Bogotá", "Soacha", "Chía", "Zipaquirá", "Facatativá", "Girardot", "Fusagasugá", "Mosquera", "Cajicá", "La Calera", "Madrid", "Tabio"],
+  "Guainía": ["Inírida", "Barranco Minas", "El Guainía", "La Guadalupe", "Mapiripana", "San Felipe", "Puerto Colombia", "Cacahual", "Pana Pana", "Morichal", "La Esmeralda", "La Unión"],
+  "Guaviare": ["San José del Guaviare", "Calamar", "El Retorno", "Miraflores", "Puerto Concordia", "Puerto Gaitán", "Sáname", "San Juanito", "La Primavera", "Cumaribo", "Cachicamo", "Cumaribo"],
+  "Huila": ["Neiva", "Aipe", "Algeciras", "Campoalegre", "Colombia", "Elías", "Garzón", "Gigante", "Hobo", "Isnos", "La Argentina", "La Plata", "Nátaga", "Pitalito", "Rivera", "Saladoblanco", "San Agustín", "Santa María", "Suaza", "Tarqui", "Tesalia", "Timaná", "Villavieja"],
+  "La Guajira": ["Riohacha", "Albania", "Barrancas", "Dibulla", "Distracción", "El Molino", "Fonseca", "Hatonuevo", "La Jagua del Pilar", "Maicao", "Manaure", "San Juan del Cesar", "Uribia", "Urumita", "Villanueva"],
+  "Magdalena": ["Santa Marta", "Algarrobo", "Aracataca", "Ciénaga", "El Banco", "El Piñón", "Guamal", "Nueva Granada", "Pivijay", "Plato", "Salamina", "San Sebastián de Buenavista", "Santa Ana", "Santa Bárbara de Pinto", "Sitionuevo", "Zona Bananera"],
+  "Meta": ["Villavicencio", "Acacías", "Barranca de Upía", "Cabuyaro", "Castillo", "Cubarral", "El Dorado", "El Castillo", "La Macarena", "La Uribe", "Lejanías", "Mapiripán", "Mesetas", "Puerto Concordia", "Puerto Gaitán", "Puerto López", "Restrepo", "San Carlos de Guaroa", "San Juan de Arama", "San Martín de los Llanos", "Vistahermosa"],
+  "Nariño": ["Pasto", "Albán", "Aldana", "Ancuya", "Arboleda", "El Contadero", "El Peñol", "Funes", "Guachucal", "Ipiales", "La Cruz", "La Florida", "La Llanada", "La Tola", "Leiva", "Los Andes", "Magüí Payán", "Mallama", "Mosquera", "Nariño", "Potosí", "Providencia", "Ricaurte", "San Bernardo", "San Lorenzo", "San Pablo", "Santa Bárbara", "Santacruz", "Sapuyes", "Taminango", "Tumaco", "Yacuanquer"],
+  "Norte de Santander": ["Cúcuta", "Ábrego", "Chinácota", "Durania", "El Tarra", "El Zulia", "Gramalote", "Hacarí", "La Esperanza", "La Playa de Belén", "Los Patios", "Puerto Santander", "Ragonvalia", "Salazar de Las Palmas", "San Calixto", "Santiago", "Tibú", "Villa Caro", "Villa de Rosario"],
+  "Putumayo": ["Mocoa", "Colón", "Orito", "San Francisco", "San Miguel", "Santiago", "Villagarzón"],
+  "Quindío": ["Armenia", "Calarcá", "Circasia", "Córdoba", "Filandia", "La Tebaida", "Montenegro", "Pereira", "Quimbaya", "Salento"],
+  "Risaralda": ["Pereira", "Dosquebradas", "Santa Rosa de Cabal", "La Virginia", "Belén de Umbría", "Guática", "Marsella", "Mistrató", "Pueblo Rico", "Santuario"],
+  "San Andrés y Providencia": ["San Andrés", "Providencia"],
+  "Santander": ["Bucaramanga", "Barrancabermeja", "Floridablanca", "Girón", "Piedecuesta", "San Gil", "Socorro", "Lebrija", "Rionegro", "El Socorro", "Vélez", "Zapatoca"],
+  "Sucre": ["Sincelejo", "Buenavista", "Caimito", "Colosó", "Corozal", "El Roble", "La Unión", "Los Palmitos", "Majagual", "Morroa", "Ovejas", "Sampués", "San Benito Abad", "San Jorge", "San Onofre", "Sucre", "Toluviejo"],
+  "Tolima": ["Ibagué", "Alvarado", "Ambalema", "Anzoátegui", "Ataco", "Cajamarca", "Campín", "Chaparral", "Coello", "El Espinal", "El Líbano", "Falan", "Fresno", "Guamo", "Herveo", "Honda", "Ibagué", "Icononzo", "Lérida", "Mariquita", "Melgar", "Murillo", "Natagaima", "Ortega", "Palocabildo", "Piedras", "Planadas", "Prado", "Purificación", "Rioblanco", "Roncesvalles", "Saldaña", "San Antonio", "San Luis", "Santa Isabel", "Suárez", "Valle de San Juan", "Venadillo", "Villarrica"],
+  "Valle del Cauca": ["Cali", "Alcalá", "Andalucía", "Buga", "Buenaventura", "Candelaria", "Cartago", "Dagua", "El Águila", "El Cerrito", "El Dovio", "Florida", "Ginebra", "Guacarí", "Jamundí", "La Cumbre", "La Unión", "Palmira", "Pradera", "Restrepo", "Roldanillo", "San Pedro", "Santiago de Cali", "Tuluá", "Versalles", "Vijes", "Yumbo"],
+  "Vaupés": ["Mitú", "Carimagua", "Pacoa", "Papunaua", "Raudal", "Taraira", "Yavaraté"],
+  "Vichada": ["Puerto Carreño", "Puerto Concordia", "Santa Rosalía", "La Primavera", "Cumaribo", "El Retorno", "San José de Ocune", "San Juan de Arama", "Tame"],
+};
+const departamentoSelect = document.getElementById('departamento');
+const municipioSelect = document.getElementById('municipio');
+departamentoSelect.addEventListener('change', function() {
+  const depto = departamentoSelect.value;
+  municipioSelect.innerHTML = '<option value="">Seleccione un municipio</option>';
+  if (municipiosPorDepartamento[depto]) {
+    municipiosPorDepartamento[depto].forEach(function(mun) {
+      const opt = document.createElement('option');
+      opt.value = mun;
+      opt.textContent = mun;
+      municipioSelect.appendChild(opt);
+    });
+  }
+});
+</script>
+</body>
+</html>
