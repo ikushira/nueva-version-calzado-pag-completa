@@ -249,11 +249,46 @@ document.addEventListener('DOMContentLoaded', function() {
     // FUNCIONALIDADES ADICIONALES
     // ===============================
     
-    // Botones "Añadir al carrito"
+    // Botones "Añadir al carrito" en carrusel principal y novedades
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('btn-blue') && e.target.textContent === 'Añadir al carrito') {
             e.preventDefault();
-            alert('Producto añadido al carrito!');
+            // Buscar la card del producto
+            const card = e.target.closest('.carousel-slide, .novedades-carousel-slide');
+            if (!card) return;
+            // Extraer nombre y precio
+            const nombre = card.querySelector('h3')?.textContent?.trim() || 'Producto';
+            const precioTxt = card.querySelector('span')?.textContent?.replace(/[^\d]/g, '') || '0';
+            const precio = parseInt(precioTxt, 10) || 0;
+            // Buscar talla seleccionada (si existiera)
+            let talla = '';
+            const tallaBtns = card.querySelectorAll('.talla-btn');
+            tallaBtns.forEach(btn => {
+                if (btn.classList.contains('selected') || btn.classList.contains('active')) {
+                    talla = btn.textContent.trim();
+                }
+            });
+            // Si hay selector de talla y no se ha elegido, pedirla
+            if (tallaBtns.length > 0 && !talla) {
+                alert('Por favor selecciona una talla antes de añadir al carrito.');
+                return;
+            }
+            // Agregar al carrito
+            if (window.agregarAlCarrito) {
+                window.agregarAlCarrito({
+                    id: nombre + (talla ? '-' + talla : ''),
+                    nombre: nombre + (talla ? ' Talla ' + talla : ''),
+                    precio: precio,
+                    cantidad: 1,
+                    talla: talla
+                });
+            }
+        }
+        // Selección visual de talla en carrusel
+        if (e.target.classList.contains('talla-btn')) {
+            const tallaBtns = e.target.parentElement.querySelectorAll('.talla-btn');
+            tallaBtns.forEach(btn => btn.classList.remove('selected', 'active'));
+            e.target.classList.add('selected');
         }
     });
 

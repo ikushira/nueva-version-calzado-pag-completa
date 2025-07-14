@@ -1,118 +1,99 @@
-// Carrusel exclusivo para la sección de novedades
+// Carrusel de novedades usando imágenes de carrusel2
+// Requiere que js/secciones_js/Carrusel2_fotos.js esté cargado antes
 
-document.addEventListener('DOMContentLoaded', function() {
-  const carousel = document.getElementById('novedades-carousel');
+window.addEventListener('DOMContentLoaded', function() {
+  const novedadesCarousel = document.getElementById('novedades-carousel');
   const prevBtn = document.getElementById('novedades-carousel-prev');
   const nextBtn = document.getElementById('novedades-carousel-next');
   const indicators = document.getElementById('novedades-carousel-indicators');
 
-  if (!carousel) return;
-
-  // Array de productos (fácil de modificar)
-  const productosNovedades = [];
-  for (let i = 2; i <= 34; i++) {
-    productosNovedades.push({
-      img: `assets/img/${i}.jpeg`,
-      nombre: `Producto ${i}`,
-      precio: 129900
-    });
+  if (!novedadesCarousel || typeof imagenesCarrusel2 === 'undefined' || !Array.isArray(imagenesCarrusel2) || imagenesCarrusel2.length === 0) {
+    console.error('Novedades: No se encontró el contenedor o la lista de imágenes está vacía.');
+    return;
   }
 
-  // Renderizar los slides
-  productosNovedades.forEach(producto => {
+  // Configuración: cuántas tarjetas por slide
+  const CARDS_PER_SLIDE = 4;
+  const totalSlides = Math.ceil(imagenesCarrusel2.length / CARDS_PER_SLIDE);
+
+  // Renderizar slides
+  novedadesCarousel.innerHTML = '';
+  for (let i = 0; i < totalSlides; i++) {
     const slide = document.createElement('div');
-    slide.className = 'novedades-carousel-slide';
-    slide.innerHTML = `
-      <img src="${producto.img}" alt="${producto.nombre}" loading="lazy">
-      <div class="novedades-carousel-caption">
-        <h3>${producto.nombre}</h3>
-        <span>$${producto.precio.toLocaleString('es-CO')}</span>
-        <button class="btn-blue">Añadir al carrito</button>
-      </div>
-    `;
-    carousel.appendChild(slide);
-  });
+    slide.className = 'novedades-slide';
+    if (i === 0) slide.style.display = 'flex';
+    else slide.style.display = 'none';
+    slide.style.gap = '24px';
+    slide.style.justifyContent = 'center';
+    slide.style.alignItems = 'stretch';
+    for (let j = 0; j < CARDS_PER_SLIDE; j++) {
+      const idx = i * CARDS_PER_SLIDE + j;
+      if (idx >= imagenesCarrusel2.length) break;
+      const src = imagenesCarrusel2[idx];
+      const card = document.createElement('div');
+      card.className = 'producto-card';
+      card.innerHTML = `
+        <div class="img-producto-wrapper" style="width:100%;height:180px;display:flex;align-items:center;justify-content:center;background:#eaf3fb;overflow:hidden;border-radius:16px 16px 0 0;box-sizing:border-box;">
+          <img src="${src}" alt="Producto ${idx+1}" loading="lazy" style="max-width:92%;max-height:92%;margin:auto;display:block;object-fit:contain;" />
+        </div>
+        <div class="producto-info" style="padding:0 12px 18px 12px;display:flex;flex-direction:column;align-items:center;">
+          <h3 class="producto-nombre" style="margin-bottom:8px;font-size:1.15rem;font-weight:700;color:#232323;text-align:center;">Producto ${idx+1}</h3>
+          <p class="producto-precio" style="margin-bottom:12px;color:#0d6efd;font-weight:bold;font-size:1.1rem;text-align:center;">$129.900</p>
+          <div class="producto-tallas" style="margin-bottom:12px;width:100%;">
+            <div class="tallas-label" style="margin-bottom:6px;font-size:0.98rem;color:#555;text-align:left;">Selecciona tu talla:</div>
+            <div class="tallas-list" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:8px;">
+              <button type="button" class="talla-btn">35</button>
+              <button type="button" class="talla-btn">36</button>
+              <button type="button" class="talla-btn">37</button>
+              <button type="button" class="talla-btn">38</button>
+              <button type="button" class="talla-btn">39</button>
+              <button type="button" class="talla-btn">40</button>
+              <button type="button" class="talla-btn">41</button>
+              <button type="button" class="talla-btn">42</button>
+            </div>
+            <button type="button" class="btn-guia-tallas" style="width:100%;margin-bottom:0;">Guía de tallas</button>
+          </div>
+          <button class="btn-add-cart" style="width:100%;margin-top:auto;">Añadir al carrito</button>
+        </div>
+      `;
+      slide.appendChild(card);
+    }
+    novedadesCarousel.appendChild(slide);
+  }
+
+  // Renderizar indicadores
+  indicators.innerHTML = '';
+  for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement('span');
+    dot.className = 'novedades-indicator' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goToSlide(i));
+    indicators.appendChild(dot);
+  }
 
   let current = 0;
-  const slides = carousel.querySelectorAll('.novedades-carousel-slide');
-  const visible = 4; // Mostrar 4 productos a la vez
+  const slides = novedadesCarousel.querySelectorAll('.novedades-slide');
+  const dots = indicators.querySelectorAll('.novedades-indicator');
 
-  let autoplayInterval = null;
-  let isPaused = false;
-  const AUTOPLAY_TIME = 3000;
-
-  function update() {
-    slides.forEach((slide, idx) => {
-      slide.style.display = (idx >= current && idx < current + visible) ? 'flex' : 'none';
-    });
-    if (indicators) {
-      indicators.innerHTML = '';
-      for (let i = 0; i <= slides.length - visible; i++) {
-        const dot = document.createElement('span');
-        dot.className = 'novedades-carousel-indicator' + (i === current ? ' active' : '');
-        dot.onclick = () => {
-          current = i;
-          update();
-          pauseAutoplay();
-        };
-        indicators.appendChild(dot);
-      }
-    }
-    if (prevBtn) prevBtn.disabled = (current === 0);
-    if (nextBtn) nextBtn.disabled = (current >= slides.length - visible);
+  function goToSlide(idx) {
+    slides[current].style.display = 'none';
+    dots[current].classList.remove('active');
+    current = idx;
+    slides[current].style.display = 'flex';
+    dots[current].classList.add('active');
   }
 
   function nextSlide() {
-    if (current < slides.length - visible) {
-      current++;
-    } else {
-      current = 0;
-    }
-    update();
+    goToSlide((current + 1) % slides.length);
+  }
+  function prevSlide() {
+    goToSlide((current - 1 + slides.length) % slides.length);
   }
 
-  function startAutoplay() {
-    if (autoplayInterval) clearInterval(autoplayInterval);
-    autoplayInterval = setInterval(() => {
-      if (!isPaused) nextSlide();
-    }, AUTOPLAY_TIME);
-  }
+  if (nextBtn) nextBtn.onclick = nextSlide;
+  if (prevBtn) prevBtn.onclick = prevSlide;
 
-  function pauseAutoplay() {
-    isPaused = true;
-    if (autoplayInterval) clearInterval(autoplayInterval);
-  }
-
-  function resumeAutoplay() {
-    isPaused = false;
-    startAutoplay();
-  }
-
-  if (prevBtn) prevBtn.onclick = function() {
-    if (current > 0) {
-      current--;
-    } else {
-      current = slides.length - visible;
-    }
-    update();
-    pauseAutoplay();
-  };
-  if (nextBtn) nextBtn.onclick = function() {
-    nextSlide();
-    pauseAutoplay();
-  };
-
-  // Pausar autoplay al interactuar y reanudar al retirar el cursor
-  [carousel, prevBtn, nextBtn, indicators].forEach(el => {
-    if (el) {
-      el.addEventListener('mouseenter', pauseAutoplay);
-      el.addEventListener('mouseleave', resumeAutoplay);
-    }
-  });
-
-  update();
-  startAutoplay();
-
-  // Exponer el array para fácil edición desde consola
-  window.productosNovedades = productosNovedades;
+  // Autoplay opcional
+  let autoplay = setInterval(nextSlide, 5000);
+  novedadesCarousel.addEventListener('mouseenter', () => clearInterval(autoplay));
+  novedadesCarousel.addEventListener('mouseleave', () => { autoplay = setInterval(nextSlide, 5000); });
 });

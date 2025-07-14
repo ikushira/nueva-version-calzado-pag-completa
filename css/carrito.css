@@ -1,0 +1,98 @@
+/* Estilos para el modal del carrito de compras */
+.modal-carrito {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.modal-carrito.oculto {
+  display: none;
+}
+.modal-carrito-content {
+  background: #fff;
+  border-radius: 12px;
+  width: 350px;
+  max-width: 95vw;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  padding: 24px 18px 18px 18px;
+  position: relative;
+}
+.modal-carrito-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.modal-carrito-title {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+.cerrar-carrito {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.carrito-lista {
+  min-height: 80px;
+  margin-bottom: 10px;
+}
+.carrito-vacio {
+  text-align: center;
+  color: #888;
+}
+.carrito-vacio-txt {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.carrito-vacio-desc {
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+}
+.btn-elegir-productos {
+  background: #c00;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 10px 28px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+.carrito-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  font-weight: 700;
+}
+.btn-finalizar-compra {
+  background: #009e2a;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.btn-carrito {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  position: relative;
+}
+.carrito-cantidad {
+  background: #c00;
+  color: #fff;
+  border-radius: 50%;
+  padding: 2px 7px;
+  font-size: 0.85rem;
+  position: absolute;
+  top: -8px;
+  right: -18px;
+}

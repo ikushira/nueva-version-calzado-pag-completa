@@ -6,10 +6,33 @@
   <title>Mundo Calzado | Tienda de Calzado</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/novedades-carousel.css">
+  <link rel="stylesheet" href="css/carrito.css">
+  <link rel="stylesheet" href="css/carrusel-talla-modal.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Modal selector de talla para carrusel -->
+  <div id="carrusel-talla-modal" class="carrusel-talla-modal oculto">
+    <div class="carrusel-talla-content">
+      <div class="carrusel-talla-header">
+        <span class="carrusel-talla-title">Selecciona tu talla:</span>
+        <button id="carrusel-talla-cerrar" class="carrusel-talla-cerrar">&times;</button>
+      </div>
+      <div class="carrusel-talla-list">
+        <button type="button" class="carrusel-talla-btn">35</button>
+        <button type="button" class="carrusel-talla-btn">36</button>
+        <button type="button" class="carrusel-talla-btn">37</button>
+        <button type="button" class="carrusel-talla-btn">38</button>
+        <button type="button" class="carrusel-talla-btn">39</button>
+        <button type="button" class="carrusel-talla-btn">40</button>
+        <button type="button" class="carrusel-talla-btn">41</button>
+        <button type="button" class="carrusel-talla-btn">42</button>
+      </div>
+      <button type="button" class="carrusel-talla-guia">Guía de tallas</button>
+      <button type="button" id="carrusel-talla-aceptar" class="carrusel-talla-aceptar">ACEPTAR</button>
+    </div>
+  </div>
   <!-- Barra superior con promoción y accesos rápidos -->
   <div class="top-bar blue-theme">
     <div class="promo">
@@ -24,15 +47,44 @@
     </div>
   </div>
 
-  <!-- Encabezado principal con logo, buscador y accesos rápidos -->
+  <!-- Encabezado principal con logo, buscador y accesos rápidos (estilo bosquejo de Niños) -->
   <header class="main-header blue-theme">
     <div class="logo">MUNDO CALZADO</div>
     <input type="text" class="search-bar" id="main-search" placeholder="¿Qué zapatos estás buscando?">
     <div class="header-actions">
-      <a href="login.html"><i class="fa-regular fa-user"></i> Iniciar sesión</a>
-      <a href="#"><i class="fa-solid fa-cart-shopping"></i> Carrito de compras</a>
+      <a href="login.html" class="header-login">
+        <i class="fa-regular fa-user"></i>
+        <span>Iniciar sesión</span>
+      </a>
+      <button id="btn-carrito" class="btn-carrito">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span>Carrito de compras</span>
+        <span id="carrito-cantidad" class="carrito-cantidad">0</span>
+      </button>
     </div>
   </header>
+  <!-- Modal Carrito de Compras -->
+  <div id="modal-carrito" class="modal-carrito oculto">
+    <div class="modal-carrito-content">
+      <div class="modal-carrito-header">
+        <span class="modal-carrito-title"><i class="fa-solid fa-cart-shopping"></i> MI CARRITO</span>
+        <button id="cerrar-carrito" class="cerrar-carrito">&times;</button>
+      </div>
+      <div id="carrito-lista" class="carrito-lista">
+        <!-- Aquí se mostrarán los productos del carrito -->
+      </div>
+      <div id="carrito-vacio" class="carrito-vacio">
+        <img src="assets/img/box-empty.svg" alt="Carrito vacío" class="carrito-vacio-img">
+        <p class="carrito-vacio-txt">Tu carrito está vacío</p>
+        <p class="carrito-vacio-desc">Aún no tienes artículos en tu carrito de compra.</p>
+        <button id="btn-elegir-productos" class="btn-elegir-productos">Elegir productos</button>
+      </div>
+      <div id="carrito-total" class="carrito-total oculto">
+        <span>Total: $<span id="carrito-total-precio">0</span></span>
+        <button id="btn-finalizar-compra" class="btn-finalizar-compra">Finalizar compra</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Menú de navegación principal -->
   <nav class="main-nav blue-theme">
@@ -104,7 +156,7 @@
         <div class="brand-logo"><img src="assets/img/marcas/rivercreek.png" alt="River Creek" class="brand-img-index"></div>
         <div class="brand-logo"><img src="assets/img/marcas/brahma.png" alt="Brahma" class="brand-img-index"></div>
         <div class="brand-logo"><img src="assets/img/marcas/throwing.png" alt="Throwing" class="brand-img-index"></div>
-        <div class="brand-logo"><img src="assets/img/marcas/verlon.png" alt="Verlon" class="brand-img-index"></div>
+        <div class="brand-logo"><img src="assets/img/marcas/verlon.png" alt="Troya" class="brand-img-index"></div>
         <div class="brand-logo"><img src="assets/img/marcas/troya.png" alt="Troya" class="brand-img-index"></div>
         <div class="brand-logo"><img src="assets/img/marcas/stardus.png" alt="Stardus" class="brand-img-index"></div>
         <div class="brand-logo"><img src="assets/img/marcas/piccadilly.png" alt="Piccadilly" class="brand-img-index"></div>
@@ -220,6 +272,8 @@
 
   <link rel="stylesheet" href="css/guia-tallas-modal.css">
   <script src="js/guia-tallas-modal.js"></script>
+  <script src="js/carrito.js"></script>
+  <script src="js/secciones_js/Carrusel2_fotos.js"></script>
   <!-- Script para funcionalidades JS -->
   <script src="js/script.js"></script>
   <script src="js/novedades-carousel.js"></script>

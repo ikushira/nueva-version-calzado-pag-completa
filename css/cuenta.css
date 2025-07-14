@@ -1,3 +1,6 @@
+.perfil-juridica {
+  display: none;
+}
 /* Estilos para la página de cuenta de usuario */
 body.cuenta-page {
   background: #f7f8fa;

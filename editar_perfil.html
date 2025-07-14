@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil - Mundo Calzado</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/novedades-carousel.css">
+    <link rel="stylesheet" href="css/editar_perfil.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Barra superior con promoción y accesos rápidos -->
+    <div class="top-bar blue-theme">
+      <div class="promo">
+        <span class="promo-strong">30% OFF 2DO PAR</span>
+        <span class="promo-timer"><i class="fa-regular fa-clock"></i> 34:09 ÚLTIMAS HORAS</span>
+      </div>
+      <div class="top-links">
+        <a href="#"><i class="fa-regular fa-envelope"></i> Contáctanos</a>
+        <a href="#"><i class="fa-solid fa-truck"></i> Sigue tu pedido</a>
+        <a href="#"><i class="fa-solid fa-location-dot"></i> Nuestras tiendas</a>
+        <a href="#"><i class="fa-solid fa-leaf"></i> Sostenibilidad</a>
+      </div>
+    </div>
+    <!-- Encabezado principal con logo, buscador y accesos rápidos -->
+    <header class="main-header blue-theme">
+      <div class="logo">MUNDO CALZADO</div>
+      <input type="text" class="search-bar" id="main-search" placeholder="¿Qué zapatos estás buscando?">
+      <div class="header-actions">
+        <a href="login.html"><i class="fa-regular fa-user"></i> Iniciar sesión</a>
+        <a href="#"><i class="fa-solid fa-cart-shopping"></i> Carrito de compras</a>
+      </div>
+    </header>
+    <!-- Menú de navegación principal -->
+    <nav class="main-nav blue-theme">
+      <ul>
+        <li><a href="nuevos.html">Nuevos</a></li>
+        <li><a href="mujeres.html">Mujeres</a></li>
+        <li><a href="hombres.html">Hombres</a></li>
+        <li><a href="ninas.html">Niñas</a></li>
+        <li><a href="ninos.html">Niños</a></li>
+        <li><a href="colegiales.html">Colegiales</a></li>
+        <li><a href="dotacion.html">Dotación</a></li>
+        <li><a href="accesorios.html">Accesorios</a></li>
+        <li><a href="marcas.html">Marcas</a></li>
+        <li><a href="#" class="ofertas">Ofertas</a></li>
+      </ul>
+    </nav>
+    <div class="cuenta-container">
+        <aside class="menu-cuenta">
+            <ul>
+                <li class="active">Perfil</li>
+                <li><a href="direccion_cuenta.html" class="menu-link">Direcciones</a></li>
+                <li>Pedidos</li>
+                <li>Tarjetas de crédito</li>
+                <li>Autenticación</li>
+                <li>Salir</li>
+            </ul>
+        </aside>
+        <main>
+            <a href="cuenta.html" class="editar-volver"><i class="fa fa-arrow-left"></i> PERFIL</a>
+            <div class="editar-titulo">Editar Perfil</div>
+            <form class="editar-form editar-container" id="formEditarPerfil">
+                <div id="msg-editar"></div>
+                <div class="editar-row">
+                    <div class="editar-col">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="editar-col">
+                        <label for="apellido">Apellido</label>
+                        <input type="text" id="apellido" name="apellido" required>
+                    </div>
+                </div>
+                <div class="editar-row">
+                    <div class="editar-col">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="editar-col">
+                        <label for="boletin">Boletín informativo</label>
+                        <div class="editar-boletin">
+                            <input type="checkbox" id="boletin" name="boletin">
+                            <label for="boletin" class="boletin-label">Quiero recibir el boletín informativo con promociones.</label>
+                        </div>
+                    </div>
+                </div>
+                <label for="cedula">Cédula de ciudadanía</label>
+                <input type="text" id="cedula" name="cedula" required pattern="[0-9]{6,10}">
+                <label for="telefono">Teléfono <span class="editar-opcional">Opcional</span></label>
+                <input type="text" id="telefono" name="telefono" pattern="[0-9]{7,10}">
+                <label for="genero">Género <span class="editar-opcional">Opcional</span></label>
+                <select id="genero" name="genero">
+                    <option value="">Seleccione</option>
+                    <option value="Femenino">Femenino</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Otro">Otro</option>
+                </select>
+                <label for="fecha">Fecha de nacimiento <span class="editar-opcional">Opcional</span></label>
+                <input type="date" id="fecha" name="fecha">
+                <div id="campos-juridica" class="campos-juridica-oculto">
+                    <label for="nit">NIT</label>
+                    <input type="text" id="nit" name="nit" pattern="[0-9]{9,12}">
+                    <label for="razon">Razón social</label>
+                    <input type="text" id="razon" name="razon">
+                </div>
+                <button type="button" class="editar-juridica" id="btnJuridica">INCLUIR CAMPOS DE PERSONA JURÍDICA</button>
+                <button type="submit">GUARDAR CAMBIOS</button>
+            </form>
+        </main>
+    </div>
+    <footer class="footer">
+      <div class="footer-main">
+        <div class="footer-col">
+          <h4>Políticas</h4>
+          <a href="#">Condiciones Promociones vigentes</a>
+          <a href="#">Canjear bonos empresariales</a>
+          <a href="#">Código de ética y buen gobierno</a>
+          <a href="#">Política de cambios y garantías tiendas físicas</a>
+          <a href="#">Política de cambios y garantías tienda online</a>
+          <a href="#">Política de privacidad, tratamiento y protección de datos personales</a>
+        </div>
+        <div class="footer-col">
+          <h4>Descubre Mundo Calzado</h4>
+          <a href="#">¿Quiénes somos?</a>
+          <a href="#">Trabaja con nosotros</a>
+          <a href="#">Encuentra nuestras tiendas</a>
+          <a href="#">Registro de descuento de cumpleaños</a>
+        </div>
+        <div class="footer-col">
+          <h4>Necesitas ayuda</h4>
+          <a href="#">Contáctanos</a>
+          <a href="#">Gestiona tus cambios</a>
+          <a href="#">Portal Autogestión de proveedores</a>
+          <a href="#">Verifica el estado de tu pedido</a>
+          <a href="#">Consulta facturas electrónicas</a>
+        </div>
+        <div class="footer-col footer-social">
+          <h4>Síguenos en nuestras redes:</h4>
+          <div class="social-icons">
+            <a href="#"><img src="assets/img/instagram.svg" alt="Instagram" /></a>
+            <a href="#"><img src="assets/img/facebook.png" alt="Facebook" /></a>
+            <a href="#"><img src="assets/img/whatsapp.svg" alt="WhatsApp" /></a>
+            <a href="#"><img src="assets/img/tiktok.svg" alt="TikTok" /></a>
+          </div>
+          <h4>Medios de pago disponibles:</h4>
+          <div class="payment-icons">
+            <span class="payment-text">Visa • Mastercard • PSE • Efecty • Nequi</span>
+          </div>
+          <h4>Vigilado por:</h4>
+          <span class="super-text">Superintendencia de Industria y Comercio</span>
+        </div>
+      </div>
+      <a href="https://wa.me/57XXXXXXXXXX" class="whatsapp-float" target="_blank" rel="noopener">
+        <img src="assets/img/whatsapp.svg" alt="WhatsApp">
+      </a>
+      <p class="copyright">&copy; 2025 Mundo Calzado. Todos los derechos reservados.</p>
+    </footer>
+    <script src="js/script.js"></script>
+    <script src="js/novedades-carousel.js"></script>
+    <script src="js/busqueda.js"></script>
+    <script src="js/editar_perfil.js"></script>
+</body>
+</html>

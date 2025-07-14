@@ -2,80 +2,110 @@
 // Reutiliza las imágenes del carrusel y muestra cards con descripción y precio
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Configuración de catálogos para todas las páginas
+
+  // --- Importar listas de imágenes desde archivos externos ---
+  // IMPORTANTE: Asegúrate de incluir estos archivos en tu HTML antes de catalogo.js
+  // <script src="js/secciones_js/Lo_nuevo_fotos.js"></script>
+  // <script src="js/secciones_js/Mujeres_fotos.js"></script>
+  // <script src="js/secciones_js/Hombres_fotos.js"></script>
+  // <script src="js/secciones_js/Ninas_fotos.js"></script>
+  // <script src="js/secciones_js/Ninos_fotos.js"></script>
+
+
   const catalogos = [
-    { id: 'catalogo-hombres', nombre: 'Zapato Hombre', precio: 75000 },
-    { id: 'catalogo-mujeres', nombre: 'Zapato Mujer', precio: 75000, imagenes: [
-      ...Array.from({length: 66}, (_, i) => `assets/img/calzmujeres/m${i+1}.jpeg`)
-    ] },
-    { id: 'catalogo-colegiales', nombre: 'Zapato Colegial', precio: 75000 },
-    { id: 'catalogo-dotacion', nombre: 'Zapato Dotación', precio: 75000, imagenes: [
-      'assets/img/dotacion/dot1.webp',
-      'assets/img/dotacion/dot2.webp',
-      'assets/img/dotacion/dot3.webp',
-      'assets/img/dotacion/dot4.webp',
-      'assets/img/dotacion/dot5.webp',
-      'assets/img/dotacion/dot6.webp',
-      'assets/img/dotacion/dot7.webp',
-    ] },
-{ id: 'catalogo-ninas', nombre: 'Zapato Niña', precio: 75000, imagenes: [
-  'assets/img/calzninas/n1.jpeg',
-  'assets/img/calzninas/n2.jpeg',
-  'assets/img/calzninas/n3.jpeg',
-  'assets/img/calzninas/n4.jpeg',
-  'assets/img/calzninas/n5.jpeg',
-  'assets/img/calzninas/n6.jpeg',
-  'assets/img/calzninas/n7.jpeg',
-  'assets/img/calzninas/n8.jpeg',
-  'assets/img/calzninas/n9.jpeg',
-  'assets/img/calzninas/n10.jpeg',
-  'assets/img/calzninas/n11.jpeg',
-  'assets/img/calzninas/n12.jpeg',
-] },
-{ id: 'catalogo-ninos', nombre: 'Zapato Niño', precio: 75000, imagenes: [
-  'assets/img/calzninos/n1.jpeg',
-  'assets/img/calzninos/n2.jpeg',
-  'assets/img/calzninos/n3.jpeg',
-  'assets/img/calzninos/n4.jpeg',
-  'assets/img/calzninos/n5.jpeg',
-  'assets/img/calzninos/n6.jpeg',
-  'assets/img/calzninos/n7.jpeg',
-  'assets/img/calzninos/n8.jpeg',
-  'assets/img/calzninos/n9.jpeg',
-  'assets/img/calzninos/n10.jpeg',
-  'assets/img/calzninos/n11.jpeg',
-  'assets/img/calzninos/n12.jpeg',
-] },
-    { id: 'catalogo-ofertas', nombre: 'Zapato Oferta', precio: 75000 },
-    { id: 'catalogo-marcas', nombre: 'Marca', precio: null, imagenes: [
-      { src: 'assets/img/marcas/newbalance.png', nombre: 'New Balance' },
-      { src: 'assets/img/marcas/skechers.png', nombre: 'Skechers' },
-      { src: 'assets/img/marcas/rivercreek.png', nombre: 'River Creek' },
-      { src: 'assets/img/marcas/brahma.png', nombre: 'Brahma' },
-      { src: 'assets/img/marcas/throwing.png', nombre: 'Throwing' },
-      { src: 'assets/img/marcas/verlon.png', nombre: 'Verlon' },
-      { src: 'assets/img/marcas/troya.png', nombre: 'Troya' },
-      { src: 'assets/img/marcas/stardus.png', nombre: 'Stardus' },
-      { src: 'assets/img/marcas/piccadilly.png', nombre: 'Piccadilly' },
-      { src: 'assets/img/marcas/patrick.png', nombre: 'Patrick' },
-      { src: 'assets/img/marcas/moleca.png', nombre: 'Moleca' },
-      { src: 'assets/img/marcas/ipanema.png', nombre: 'Ipanema' },
-      { src: 'assets/img/marcas/gumball.png', nombre: 'Gumball' },
-      { src: 'assets/img/marcas/frattini.png', nombre: 'Frattini' },
-      { src: 'assets/img/marcas/croydon.png', nombre: 'Croydon' },
-      { src: 'assets/img/marcas/cartago.png', nombre: 'Cartago' },
-      { src: 'assets/img/marcas/bubblegummers.png', nombre: 'Bubblegummers' },
-      { src: 'assets/img/marcas/24walks.png', nombre: '24 Walks' },
-    ] },
-    { id: 'catalogo-accesorios', nombre: 'Accesorio', precio: 29900, imagenes: [
-      'assets/img/complementos/bolso1.webp',
-      'assets/img/complementos/bolso2.webp',
-      'assets/img/complementos/bolso3.webp',
-      'assets/img/complementos/medias1.webp',
-      'assets/img/complementos/medias2.webp',
-      'assets/img/complementos/medias3.webp',
-      'assets/img/complementos/medias4.webp',
-    ] },
+    {
+      id: 'catalogo-hombres',
+      nombre: 'Zapato Hombre',
+      precio: 75000,
+      imagenes: typeof imagenesHombres !== 'undefined' ? imagenesHombres : []
+    },
+    {
+      id: 'catalogo-mujeres',
+      nombre: 'Zapato Mujer',
+      precio: 75000,
+      imagenes: typeof imagenesMujeres !== 'undefined' ? imagenesMujeres : []
+    },
+    {
+      id: 'catalogo-ninas',
+      nombre: 'Zapato Niña',
+      precio: 75000,
+      imagenes: typeof imagenesNinas !== 'undefined' ? imagenesNinas : []
+    },
+    {
+      id: 'catalogo-ninos',
+      nombre: 'Zapato Niño',
+      precio: 75000,
+      imagenes: typeof imagenesNinos !== 'undefined' ? imagenesNinos : []
+    },
+    {
+      id: 'catalogo-colegiales',
+      nombre: 'Zapato Colegial',
+      precio: 75000,
+      imagenes: typeof imagenesColegiales !== 'undefined' ? imagenesColegiales : []
+    },
+    {
+      id: 'catalogo-dotacion',
+      nombre: 'Zapato Dotación',
+      precio: 75000,
+      imagenes: typeof imagenesDotacion !== 'undefined' ? imagenesDotacion : []
+    },
+    {
+      id: 'catalogo-ofertas',
+      nombre: 'Zapato Oferta',
+      precio: 75000,
+      imagenes: typeof imagenesOfertas !== 'undefined' ? imagenesOfertas : []
+    },
+    {
+      id: 'catalogo-marcas',
+      nombre: 'Marca',
+      precio: null,
+      imagenes: [
+        { src: 'assets/img/marcas/newbalance.png', nombre: 'New Balance' },
+        { src: 'assets/img/marcas/skechers.png', nombre: 'Skechers' },
+        { src: 'assets/img/marcas/rivercreek.png', nombre: 'River Creek' },
+        { src: 'assets/img/marcas/brahma.png', nombre: 'Brahma' },
+        { src: 'assets/img/marcas/throwing.png', nombre: 'Throwing' },
+        { src: 'assets/img/marcas/verlon.png', nombre: 'Verlon' },
+        { src: 'assets/img/marcas/troya.png', nombre: 'Troya' },
+        { src: 'assets/img/marcas/stardus.png', nombre: 'Stardus' },
+        { src: 'assets/img/marcas/piccadilly.png', nombre: 'Piccadilly' },
+        { src: 'assets/img/marcas/patrick.png', nombre: 'Patrick' },
+        { src: 'assets/img/marcas/moleca.png', nombre: 'Moleca' },
+        { src: 'assets/img/marcas/ipanema.png', nombre: 'Ipanema' },
+        { src: 'assets/img/marcas/gumball.png', nombre: 'Gumball' },
+        { src: 'assets/img/marcas/frattini.png', nombre: 'Frattini' },
+        { src: 'assets/img/marcas/croydon.png', nombre: 'Croydon' },
+        { src: 'assets/img/marcas/cartago.png', nombre: 'Cartago' },
+        { src: 'assets/img/marcas/bubblegummers.png', nombre: 'Bubblegummers' },
+        { src: 'assets/img/marcas/24walks.png', nombre: '24 Walks' },
+      ]
+    },
+    {
+      id: 'catalogo-accesorios',
+      nombre: 'Accesorio',
+      precio: 29900,
+      imagenes: typeof imagenesAccesorios !== 'undefined' ? imagenesAccesorios : []
+    },
+    // Carrusel 1 y 2 como catálogos independientes (si se usan como secciones)
+    {
+      id: 'catalogo-carrusel1',
+      nombre: 'Carrusel 1',
+      precio: null,
+      imagenes: typeof imagenesCarrusel1 !== 'undefined' ? imagenesCarrusel1 : []
+    },
+    {
+      id: 'catalogo-carrusel2',
+      nombre: 'Carrusel 2',
+      precio: null,
+      imagenes: typeof imagenesCarrusel2 !== 'undefined' ? imagenesCarrusel2 : []
+    },
+    // Catálogo especial para "Nuevos" (solo se usa en nuevos.html)
+    {
+      id: 'catalogo-hombres',
+      nombre: 'Zapato Hombre',
+      precio: 75000,
+      imagenes: window.location.pathname.includes('nuevos.html') && typeof imagenesLoNuevo !== 'undefined' ? imagenesLoNuevo : []
+    },
   ];
 
   // Detectar si estamos en la página de nuevos o marcas
@@ -178,7 +208,35 @@ document.addEventListener('DOMContentLoaded', function() {
       contenedor.addEventListener('click', function(e) {
         if (e.target.classList.contains('btn-add-cart')) {
           e.preventDefault();
-          alert('Producto añadido al carrito!');
+          // Buscar la card del producto
+          const card = e.target.closest('.producto-card');
+          if (!card) return;
+          // Extraer nombre y precio
+          const nombre = card.querySelector('h3')?.textContent?.trim() || 'Producto';
+          const precioTxt = card.querySelector('.producto-precio')?.textContent?.replace(/[^\d]/g, '') || '0';
+          const precio = parseInt(precioTxt, 10) || 0;
+          // Buscar talla seleccionada
+          let talla = '';
+          const tallaBtns = card.querySelectorAll('.talla-btn');
+          tallaBtns.forEach(btn => {
+            if (btn.classList.contains('selected') || btn.classList.contains('active')) {
+              talla = btn.textContent.trim();
+            }
+          });
+          if (!talla) {
+            alert('Por favor selecciona una talla antes de añadir al carrito.');
+            return;
+          }
+          // Agregar al carrito
+          if (window.agregarAlCarrito) {
+            window.agregarAlCarrito({
+              id: nombre + '-' + talla,
+              nombre: nombre + ' Talla ' + talla,
+              precio: precio,
+              cantidad: 1,
+              talla: talla
+            });
+          }
         }
         if (e.target.classList.contains('btn-guia-tallas')) {
           e.preventDefault();
@@ -189,6 +247,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if (typeof mostrarPanelGuiaTallas === 'function') mostrarPanelGuiaTallas('medida');
             if (typeof cambiarImagenGuiaTallas === 'function') cambiarImagenGuiaTallas('medida');
           }
+        }
+        // Selección visual de talla
+        if (e.target.classList.contains('talla-btn')) {
+          tallaBtns = e.target.parentElement.querySelectorAll('.talla-btn');
+          tallaBtns.forEach(btn => btn.classList.remove('selected', 'active'));
+          e.target.classList.add('selected');
         }
       });
     }

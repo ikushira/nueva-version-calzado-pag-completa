@@ -72,42 +72,79 @@
                     <div class="perfil-datos">
                         <div>
                             <label>Nombre</label>
-                            <span></span>
+                            <span id="perfil-nombre"></span>
                         </div>
                         <div>
                             <label>Apellido</label>
-                            <span></span>
+                            <span id="perfil-apellido"></span>
                         </div>
                         <div>
                             <label>Email</label>
-                            <span>daisydev65031024@gmail.com</span>
+                            <span id="perfil-email"></span>
                         </div>
                         <div>
                             <label>Boletín informativo</label>
-                            <span></span>
+                            <span id="perfil-boletin"></span>
                         </div>
                         <div>
                             <label>Cédula de ciudadanía</label>
-                            <span></span>
+                            <span id="perfil-cedula"></span>
                         </div>
                         <div>
                             <label>Género</label>
-                            <span></span>
+                            <span id="perfil-genero"></span>
                         </div>
                         <div>
                             <label>Fecha de nacimiento</label>
-                            <span></span>
+                            <span id="perfil-fecha"></span>
                         </div>
                         <div>
                             <label>Teléfono</label>
-                            <span></span>
+                            <span id="perfil-telefono"></span>
+                        </div>
+                        <div id="perfil-juridica" class="perfil-juridica">
+                            <label>NIT</label>
+                            <span id="perfil-nit"></span>
+                            <label>Razón social</label>
+                            <span id="perfil-razon"></span>
                         </div>
                     </div>
                     <div class="perfil-editar">
-                        <a href="#">EDITAR</a>
+                        <a href="editar_perfil.html">EDITAR</a>
                     </div>
                 </div>
                 <div class="boletin-card">
+<script>
+// Precarga los datos del perfil desde localStorage y sincroniza el checkbox de boletín
+document.addEventListener('DOMContentLoaded', function() {
+    const datos = localStorage.getItem('perfilUsuario');
+    if (datos) {
+        try {
+            const perfil = JSON.parse(datos);
+            if (perfil.nombre) document.getElementById('perfil-nombre').textContent = perfil.nombre;
+            if (perfil.apellido) document.getElementById('perfil-apellido').textContent = perfil.apellido;
+            if (perfil.email) document.getElementById('perfil-email').textContent = perfil.email;
+            if (typeof perfil.boletin !== 'undefined') {
+                document.getElementById('perfil-boletin').textContent = perfil.boletin ? 'Sí' : 'No';
+                var boletinCheck = document.getElementById('boletin');
+                if (boletinCheck) {
+                    boletinCheck.checked = perfil.boletin;
+                    boletinCheck.disabled = true;
+                }
+            }
+            if (perfil.cedula) document.getElementById('perfil-cedula').textContent = perfil.cedula;
+            if (perfil.telefono) document.getElementById('perfil-telefono').textContent = perfil.telefono;
+            if (perfil.genero) document.getElementById('perfil-genero').textContent = perfil.genero;
+            if (perfil.fecha) document.getElementById('perfil-fecha').textContent = perfil.fecha;
+            if ((perfil.nit && perfil.nit.length > 0) || (perfil.razon && perfil.razon.length > 0)) {
+                document.getElementById('perfil-juridica').style.display = 'block';
+                if (perfil.nit) document.getElementById('perfil-nit').textContent = perfil.nit;
+                if (perfil.razon) document.getElementById('perfil-razon').textContent = perfil.razon;
+            }
+        } catch(e) {}
+    }
+});
+</script>
                     <label>Boletín informativo</label>
                     <div class="boletin-descripcion">¿Quiere recibir boletines informativos promocionales?</div>
                     <input type="checkbox" id="boletin" name="boletin">
