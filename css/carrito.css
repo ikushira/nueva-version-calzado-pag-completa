@@ -49,7 +49,7 @@
   transition: all 0.2s;
 }
 .cerrar-carrito:hover {
-  color: #c00;
+  color: #ff0000;
   transform: scale(1.1);
 }
 .carrito-lista {
@@ -79,7 +79,7 @@
   padding: 0 10px;
 }
 .btn-elegir-productos {
-  background: #c00;
+  background: #ff0000;
   color: #fff;
   border: none;
   border-radius: 24px;
@@ -136,7 +136,7 @@
   position: relative;
 }
 .carrito-cantidad {
-  background: #c00;
+  background: #ff0000;
   color: #fff;
   border-radius: 50%;
   padding: 2px 7px;

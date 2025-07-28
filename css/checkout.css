@@ -17,7 +17,7 @@
 .checkout-header .logo {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--primary-color, #dc2626);
+    color: var(--primary-color, #ff0000);
 }
 
 .checkout-steps {
@@ -34,7 +34,7 @@
 }
 
 .step.active {
-    color: var(--primary-color, #dc2626);
+    color: var(--primary-color, #ff0000);
 }
 
 .step-number {
@@ -52,7 +52,7 @@
 }
 
 .step.active .step-number {
-    background: var(--primary-color, #dc2626);
+    background: var(--primary-color, #ff0000);
     color: white;
 }
 
@@ -112,7 +112,7 @@
 }
 
 .guest-user a {
-    color: var(--primary-color, #dc2626);
+    color: var(--primary-color, #ff0000);
     text-decoration: none;
     font-weight: 500;
 }
@@ -156,7 +156,7 @@
 .form-group input:focus,
 .form-group select:focus {
     outline: none;
-    border-color: var(--primary-color, #dc2626);
+    border-color: var(--primary-color, #ff0000);
     box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
 }
 
@@ -182,7 +182,7 @@
 .btn-pay,
 .btn-track,
 .btn-continue-shopping {
-    background: var(--primary-color, #dc2626);
+    background: var(--primary-color, #ff0000);
     color: white;
     border: none;
     padding: 1rem 2rem;
@@ -199,7 +199,7 @@
 .btn-pay:hover,
 .btn-track:hover,
 .btn-continue-shopping:hover {
-    background: #b91c1c;
+    background: #ff0000;
     transform: translateY(-1px);
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
@@ -234,7 +234,7 @@
 }
 
 .payment-method input[type="radio"]:checked + label {
-    border-color: var(--primary-color, #dc2626);
+    border-color: var(--primary-color, #ff0000);
     background: rgba(220, 38, 38, 0.05);
 }
 
@@ -457,7 +457,7 @@
 
 .item-price {
     font-weight: 600;
-    color: var(--primary-color, #dc2626);
+    color: var(--primary-color, #ff0000);
 }
 
 .order-totals {
@@ -558,7 +558,7 @@
 }
 
 .btn-track {
-    background: var(--primary-color, #dc2626);
+    background: var(--primary-color, #ff0000);
 }
 
 .btn-continue-shopping {

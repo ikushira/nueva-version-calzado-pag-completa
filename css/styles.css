@@ -69,9 +69,9 @@
   outline: none;
 }
 .talla-btn.selected, .talla-btn:focus {
-  border: 2px solid #d21c32;
+  border: 2px solid #ff0000;
   background: #fff;
-  color: #d21c32;
+  color: #ff0000;
 }
 .btn-guia-tallas {
   width: 100%;
@@ -87,8 +87,8 @@
   transition: border 0.18s, background 0.18s;
 }
 .btn-guia-tallas:hover {
-  border: 2px solid #d21c32;
-  color: #d21c32;
+  border: 2px solid #ff0000;
+  color: #ff0000;
 }
 
 /* Ajuste tamaño tarjetas producto para que no se salgan */
@@ -252,7 +252,7 @@
   min-width: 0;
 }
 .newsletter-sketch .btn-newsletter {
-  background: #d21c32;
+  background: #ff0000;
   color: #fff;
   border: none;
   border-radius: 30px;
@@ -264,7 +264,7 @@
   white-space: nowrap;
 }
 .newsletter-sketch .btn-newsletter:hover {
-  background: #b81a2b;
+  background: #ff0000;
 }
 
 @media (max-width: 900px) {
@@ -1108,7 +1108,7 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: #e4002b;
+  background: #ff0000;
   color: white;
   border: none;
   font-size: 24px;
@@ -1647,7 +1647,7 @@ body {
 }
 .carrusel2-btn:hover {
   background: #e6f0fa;
-  color: #d21c32;
+  color: #ff0000;
   box-shadow: 0 4px 16px rgba(0,0,0,0.15);
 }
 .carrusel2-indicators {

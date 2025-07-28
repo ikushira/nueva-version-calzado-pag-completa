@@ -2,8 +2,8 @@
 :root {
   /* Colores principales */
   --color-primary: #ff0000; /* Rojo vibrante - Color principal */
-  --color-primary-dark: #cc0000; /* Rojo oscuro para hover */
-  --color-primary-light: #ff3333; /* Rojo claro para acentos */
+  --color-primary-dark: #ff0000; /* Rojo oscuro para hover */
+  --color-primary-light: #ff0000; /* Rojo claro para acentos */
   
   /* Colores neutros */
   --color-neutral-dark: #333333; /* Casi negro para textos */
@@ -41,8 +41,8 @@
   --shadow-large: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Redefinición de clases basadas en temas */
-.red-theme {
+/* #ff0000inición de clases basadas en temas */
+.#ff0000-theme {
   background-color: var(--color-primary);
   color: var(--color-white);
 }
@@ -52,7 +52,7 @@
   color: var(--color-white);
 }
 
-/* Redefinir la clase blue-theme (mantener por compatibilidad) */
+/* #ff0000inir la clase blue-theme (mantener por compatibilidad) */
 .blue-theme {
   background-color: var(--color-primary);
   color: var(--color-white);

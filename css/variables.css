@@ -7,8 +7,8 @@
 :root {
   /* Colores primarios */
   --color-primary: #ff0000;          /* Rojo principal */
-  --color-primary-light: #ff3333;    /* Rojo claro */
-  --color-primary-dark: #cc0000;     /* Rojo oscuro */
+  --color-primary-light: #ff0000;    /* Rojo claro */
+  --color-primary-dark: #ff0000;     /* Rojo oscuro */
   
   /* Colores neutrales */
   --color-neutral-dark: #232323;     /* Texto principal */
@@ -23,7 +23,7 @@
   /* Colores de estado */
   --color-success: #28a745;          /* Éxito - Verde */
   --color-warning: #ffc107;          /* Advertencia - Amarillo */
-  --color-danger: #dc3545;           /* Error - Rojo oscuro */
+  --color-danger: #ff0000;           /* Error - Rojo oscuro */
   --color-info: #17a2b8;             /* Información - Celeste */
   
   /* Espaciados */

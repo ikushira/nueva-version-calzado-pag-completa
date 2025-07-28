@@ -59,9 +59,9 @@
 }
 .carrusel-talla-btn.selected,
 .carrusel-talla-btn.seleccionada {
-  border: 2px solid #d21c32;
+  border: 2px solid #ff0000;
   background: #fff;
-  color: #d21c32;
+  color: #ff0000;
 }
 .carrusel-talla-guia {
   width: 100%;
@@ -77,8 +77,8 @@
   transition: border 0.18s, background 0.18s;
 }
 .carrusel-talla-guia:hover {
-  border: 2px solid #d21c32;
-  color: #d21c32;
+  border: 2px solid #ff0000;
+  color: #ff0000;
 }
 .carrusel-talla-aceptar {
   background: #1a8cff;

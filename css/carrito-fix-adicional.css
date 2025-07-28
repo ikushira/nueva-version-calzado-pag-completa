@@ -39,7 +39,7 @@
 }
 
 .carrito-vacio-icon-color {
-  color: #e30613;
+  color: #ff0000;
   margin-bottom: 10px;
   opacity: 0.8;
 }
@@ -58,7 +58,7 @@
   overflow-y: auto;
 }
 
-/* Reducir espacios en blanco innecesarios */
+/* #ff0000ucir espacios en blanco innecesarios */
 #carrito-modal .modal-content {
   padding: 15px;
 }
@@ -81,7 +81,7 @@
   position: absolute;
   top: -8px;
   right: -8px;
-  background-color: #e91e63;
+  background-color: #ff0000;
   color: white;
   border-radius: 50%;
   width: 18px;
@@ -166,7 +166,7 @@
   color: #e65100;
 }
 
-/* Reducir espacio en blanco en el modal */
+/* #ff0000ucir espacio en blanco en el modal */
 .modal-carrito-content {
   padding: 0 15px 15px 15px;
 }

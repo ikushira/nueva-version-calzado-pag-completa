@@ -290,7 +290,7 @@
 
 /* ===== ANIMACIONES SUAVES ===== */
 
-@media (prefers-reduced-motion: no-preference) {
+@media (prefers-#ff0000uced-motion: no-preference) {
   .main-nav,
   .mobile-menu-overlay,
   .mobile-menu-toggle .hamburger span {
@@ -298,8 +298,8 @@
   }
 }
 
-/* Reducir animaciones para usuarios que lo prefieren */
-@media (prefers-reduced-motion: reduce) {
+/* #ff0000ucir animaciones para usuarios que lo prefieren */
+@media (prefers-#ff0000uced-motion: #ff0000uce) {
   .main-nav,
   .mobile-menu-overlay,
   .mobile-menu-toggle .hamburger span {

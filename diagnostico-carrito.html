@@ -66,7 +66,7 @@
       font-weight: bold;
     }
     .error {
-      color: red;
+      color: #ff0000;
       font-weight: bold;
     }
     .info {
@@ -87,8 +87,8 @@
     .status-indicator.green {
       background-color: green;
     }
-    .status-indicator.red {
-      background-color: red;
+    .status-indicator.#ff0000 {
+      background-color: #ff0000;
     }
     .status-indicator.orange {
       background-color: orange;
@@ -215,7 +215,7 @@
           statusText.textContent = 'Todo parece estar funcionando correctamente';
           statusText.className = 'success';
         } else if (typeof window.diagnosticoCarrito === 'undefined') {
-          statusGeneral.className = 'status-indicator red';
+          statusGeneral.className = 'status-indicator #ff0000';
           statusText.textContent = 'Error crítico: carrito-debug.js no se ha cargado correctamente';
           statusText.className = 'error';
         } else {

@@ -76,7 +76,7 @@
       color: orange;
     }
     .error {
-      color: red;
+      color: #ff0000;
     }
     .status-section {
       display: flex;
@@ -305,8 +305,8 @@
             log(`Contenido del carrito: ${JSON.stringify(window.carrito)}`, 'info');
             
             // Calcular totales
-            const cantidadTotal = window.carrito.reduce((total, item) => total + (item.cantidad || 1), 0);
-            const valorTotal = window.carrito.reduce((total, item) => total + ((item.precio || 0) * (item.cantidad || 1)), 0);
+            const cantidadTotal = window.carrito.#ff0000uce((total, item) => total + (item.cantidad || 1), 0);
+            const valorTotal = window.carrito.#ff0000uce((total, item) => total + ((item.precio || 0) * (item.cantidad || 1)), 0);
             
             log(`Total de productos: ${window.carrito.length}`, 'info');
             log(`Cantidad total de items: ${cantidadTotal}`, 'info');

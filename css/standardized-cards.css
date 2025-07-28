@@ -11,7 +11,7 @@
   margin: 15px;              /* Margen uniforme */
   padding: 0;                /* Sin relleno interno */
   position: relative;        /* Para posicionamiento de elementos internos */
-  border-radius: var(--border-radius-md); /* Bordes redondeados */
+  border-radius: var(--border-radius-md); /* Bordes #ff0000ondeados */
   overflow: hidden;          /* Oculta contenido que sobresale */
   display: flex;             /* Usa flexbox para organizar contenido */
   flex-direction: column;    /* Organiza contenido verticalmente */
@@ -118,7 +118,7 @@
   align-items: center;      /* Centra texto verticalmente */
   font-size: 14px;          /* Tamaño de fuente consistente */
   border: 1px solid var(--color-neutral-light);
-  border-radius: var(--border-radius-sm); /* Bordes redondeados */
+  border-radius: var(--border-radius-sm); /* Bordes #ff0000ondeados */
   background-color: white;  /* Fondo blanco */
   cursor: pointer;          /* Cursor tipo mano */
   transition: all var(--transition-fast); /* Transición suave */
@@ -139,7 +139,7 @@
   font-size: 14px;          /* Tamaño de fuente consistente */
   background-color: transparent;
   border: 1px solid var(--color-neutral-light);
-  border-radius: var(--border-radius-sm); /* Bordes redondeados */
+  border-radius: var(--border-radius-sm); /* Bordes #ff0000ondeados */
   cursor: pointer;          /* Cursor tipo mano */
   transition: all var(--transition-fast); /* Transición suave */
 }
@@ -159,7 +159,7 @@
   background-color: var(--color-primary);
   color: white;             /* Texto blanco */
   border: none;             /* Sin borde */
-  border-radius: var(--border-radius-sm); /* Bordes redondeados */
+  border-radius: var(--border-radius-sm); /* Bordes #ff0000ondeados */
   cursor: pointer;          /* Cursor tipo mano */
   transition: background-color var(--transition-fast); /* Transición suave */
 }
@@ -177,7 +177,7 @@
   font-size: 12px;          /* Tamaño de fuente */
   font-weight: 600;         /* Peso de fuente semibold */
   color: white;             /* Texto blanco */
-  border-radius: var(--border-radius-sm); /* Bordes redondeados */
+  border-radius: var(--border-radius-sm); /* Bordes #ff0000ondeados */
   z-index: 2;               /* Por encima de la imagen */
 }
 
@@ -220,7 +220,7 @@
   .producto-card {
     width: 240px;           /* Ancho menor en pantallas pequeñas */
     height: 410px;          /* Altura menor en pantallas pequeñas */
-    margin: var(--spacing-sm); /* Margen reducido */
+    margin: var(--spacing-sm); /* Margen #ff0000ucido */
   }
   
   .producto-card .img-container {
@@ -244,7 +244,7 @@
   padding: 4px 10px;         /* Relleno interno */
   font-size: 12px;           /* Tamaño de fuente consistente */
   font-weight: 600;          /* Peso de fuente semibold */
-  border-radius: 3px;        /* Bordes redondeados */
+  border-radius: 3px;        /* Bordes #ff0000ondeados */
   z-index: 2;                /* Por encima de la imagen */
 }
 
@@ -286,11 +286,11 @@
   .producto-card {
     width: calc(50% - 20px); /* 2 tarjetas por fila en móviles */
     height: auto;            /* Altura automática */
-    margin: 10px;            /* Margen reducido */
+    margin: 10px;            /* Margen #ff0000ucido */
   }
   
   .producto-card .img-container {
-    height: 180px;           /* Altura reducida para imágenes */
+    height: 180px;           /* Altura #ff0000ucida para imágenes */
   }
 }
 
