@@ -124,18 +124,21 @@ function enlazarEventosCarrito() {
   
   if (btnFinalizarCompra) {
     btnFinalizarCompra.addEventListener('click', function() {
-      console.log("Finalizando compra");
-      alert('¡Gracias por tu compra!');
+      console.log("Finalizando compra - Redirigiendo a checkout");
       
-      // Vaciar el carrito
-      carrito = [];
-      guardarCarrito();
-      renderizarProductosCarrito();
+      // Verificar que hay productos en el carrito
+      if (carrito.length === 0) {
+        alert('Tu carrito está vacío. Agrega productos antes de continuar.');
+        return;
+      }
       
-      // Cerrar el modal
+      // Cerrar el modal del carrito
       if (modalCarrito) {
         modalCarrito.classList.add('oculto');
       }
+      
+      // Redirigir al checkout
+      window.location.href = 'checkout.html';
     });
   }
   

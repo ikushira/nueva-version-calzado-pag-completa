@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="./css/image-size-fix.css">
     <script src="js/verificar-sesion.js"></script>
   <link rel="stylesheet" href="css/chatbot.css">
+  <link rel="stylesheet" href="css/responsive-mobile.css">
+  <link rel="stylesheet" href="css/mobile-navigation.css">
 </head>
 <body class="cuenta-page">
     <!-- Barra superior con promoción y accesos rápidos -->
@@ -158,37 +160,6 @@
                     </div>
                 </div>
                 <div class="boletin-card">
-<script>
-// Precarga los datos del perfil desde localStorage y sincroniza el checkbox de boletín
-document.addEventListener('DOMContentLoaded', function() {
-    const datos = localStorage.getItem('perfilUsuario');
-    if (datos) {
-        try {
-            const perfil = JSON.parse(datos);
-            if (perfil.nombre) document.getElementById('perfil-nombre').textContent = perfil.nombre;
-            if (perfil.apellido) document.getElementById('perfil-apellido').textContent = perfil.apellido;
-            if (perfil.email) document.getElementById('perfil-email').textContent = perfil.email;
-            if (typeof perfil.boletin !== 'undefined') {
-                document.getElementById('perfil-boletin').textContent = perfil.boletin ? 'Sí' : 'No';
-                var boletinCheck = document.getElementById('boletin');
-                if (boletinCheck) {
-                    boletinCheck.checked = perfil.boletin;
-                    boletinCheck.disabled = true;
-                }
-            }
-            if (perfil.cedula) document.getElementById('perfil-cedula').textContent = perfil.cedula;
-            if (perfil.telefono) document.getElementById('perfil-telefono').textContent = perfil.telefono;
-            if (perfil.genero) document.getElementById('perfil-genero').textContent = perfil.genero;
-            if (perfil.fecha) document.getElementById('perfil-fecha').textContent = perfil.fecha;
-            if ((perfil.nit && perfil.nit.length > 0) || (perfil.razon && perfil.razon.length > 0)) {
-                document.getElementById('perfil-juridica').style.display = 'block';
-                if (perfil.nit) document.getElementById('perfil-nit').textContent = perfil.nit;
-                if (perfil.razon) document.getElementById('perfil-razon').textContent = perfil.razon;
-            }
-        } catch(e) {}
-    }
-});
-</script>
                     <label>Boletín informativo</label>
                     <div class="boletin-descripcion">¿Quiere recibir boletines informativos promocionales?</div>
                     <input type="checkbox" id="boletin" name="boletin">
@@ -247,11 +218,12 @@ document.addEventListener('DOMContentLoaded', function() {
     <script src="js/script.js"></script>
     <script src="js/novedades-carousel.js"></script>
     <script src="js/busqueda.js"></script>
-    <script src="./js/image-size-fix.js"></script>
-  <script src="js/carrito-correccion-final.js"></script>
-  <script src="js/carrito-tarjetas-fix.js"></script>
-  <script src="js/diagnostico-carrito-tarjetas.js"></script>
+    <script src="./js/image-size-fix.js"></script><script src="js/gestor-usuarios.js"></script>
+  <script src="js/cuenta-system.js"></script>
 <script src="js/aplicar-whatsapp-all-pages.js"></script>
   <script src="js/chatbot.js"></script>
+  <script src="js/mobile-navigation.js"></script>
+    <script src="js/carrito-simplificado.js"></script>
+    <script src="js/carrito-estilo-fix.js"></script>
 </body>
 </html>

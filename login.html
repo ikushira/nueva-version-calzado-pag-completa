@@ -24,6 +24,8 @@
   <link rel="stylesheet" href="css/carrito-imagen-fix.css">
     <link rel="stylesheet" href="css/whatsapp-button.css">
     <link rel="stylesheet" href="css/chatbot.css">
+  <link rel="stylesheet" href="css/responsive-mobile.css">
+  <link rel="stylesheet" href="css/mobile-navigation.css">
 </head>
 <body>
   <div class="login-container">
@@ -62,113 +64,9 @@
     </form>
     <div id="error-msg" class="error-msg"></div>
   </div>
-  <script>
-    const loginForm = document.getElementById('login-form');
-    const registerForm = document.getElementById('register-form');
-    const showRegister = document.getElementById('show-register');
-    const showLogin = document.getElementById('show-login');
-    const formTitle = document.getElementById('form-title');
-    const errorMsg = document.getElementById('error-msg');
-
-    showRegister.onclick = function() {
-      loginForm.style.display = 'none';
-      registerForm.style.display = 'block';
-      formTitle.textContent = 'Registro de nuevo cliente';
-      errorMsg.textContent = '';
-    };
-    showLogin.onclick = function() {
-      registerForm.style.display = 'none';
-      loginForm.style.display = 'block';
-      formTitle.textContent = 'Iniciar sesión';
-      errorMsg.textContent = '';
-    };
-
-    // Función para obtener usuarios del localStorage
-    function getUsers() {
-      const users = localStorage.getItem('usuarios');
-      return users ? JSON.parse(users) : [];
-    }
-
-    // Función para guardar usuarios en localStorage
-    function saveUsers(users) {
-      localStorage.setItem('usuarios', JSON.stringify(users));
-    }
-
-    // Registro de usuario
-    registerForm.onsubmit = function(e) {
-      e.preventDefault();
-      const name = document.getElementById('reg-name').value.trim();
-      const email = document.getElementById('reg-email').value.trim();
-      const pass = document.getElementById('reg-password').value;
-      const confirm = document.getElementById('reg-confirm').value;
-      if (pass !== confirm) {
-        errorMsg.textContent = 'Las contraseñas no coinciden.';
-        return;
-      }
-      if (!name || !email || !pass) {
-        errorMsg.textContent = 'Por favor, completa todos los campos.';
-        return;
-      }
-      const users = getUsers();
-      if (users.some(u => u.email === email)) {
-        errorMsg.textContent = 'El correo ya está registrado.';
-        return;
-      }
-      // Guardar usuario en la lista de usuarios
-      users.push({ name, email, pass });
-      saveUsers(users);
-
-      // Crear perfil básico del usuario
-      const perfilBasico = {
-        nombre: name.split(' ')[0] || '',
-        apellido: name.split(' ').slice(1).join(' ') || '',
-        email: email,
-        boletin: false
-      };
-      
-      // Guardar en el registro de usuarios
-      let usuariosRegistrados = JSON.parse(localStorage.getItem('usuariosRegistrados') || '[]');
-      usuariosRegistrados.push(perfilBasico);
-      localStorage.setItem('usuariosRegistrados', JSON.stringify(usuariosRegistrados));
-
-      // Guardar usuario activo y redireccionar
-      localStorage.setItem('usuarioActivo', JSON.stringify({
-        name: name,
-        email: email
-      }));
-
-      errorMsg.style.color = '#388e3c';
-      errorMsg.textContent = '¡Registro exitoso! Redirigiendo a tu perfil...';
-      setTimeout(() => {
-        window.location.href = 'cuenta.html';
-      }, 1500);
-    };
-
-    // Inicio de sesión
-    loginForm.onsubmit = function(e) {
-      e.preventDefault();
-      const email = document.getElementById('login-email').value.trim();
-      const pass = document.getElementById('login-password').value;
-      const users = getUsers();
-      const user = users.find(u => u.email === email && u.pass === pass);
-      if (user) {
-        errorMsg.style.color = '#388e3c';
-        errorMsg.textContent = '¡Inicio de sesión exitoso!';
-        // Guardar información del usuario activo
-        localStorage.setItem('usuarioActivo', JSON.stringify({
-          name: user.name,
-          email: user.email
-        }));
-        // Redirigir a la página de perfil después de un breve delay
-        setTimeout(() => {
-          window.location.href = 'cuenta.html';
-        }, 1000);
-      } else {
-        errorMsg.style.color = '';
-        errorMsg.textContent = 'Correo o contraseña incorrectos.';
-      }
-    };
-  </script>
+  
+  <script src="js/gestor-usuarios.js"></script>
+  <script src="js/login-system.js"></script>
     <script src="./js/image-size-fix.js"></script>
   
   
@@ -182,5 +80,6 @@
     </a>
   <script src="js/aplicar-whatsapp-all-pages.js"></script>
   <script src="js/chatbot.js"></script>
+  <script src="js/mobile-navigation.js"></script>
 </body>
 </html>

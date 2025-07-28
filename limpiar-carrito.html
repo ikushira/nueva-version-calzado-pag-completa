@@ -54,6 +54,8 @@
     <link rel="stylesheet" href="./css/image-size-fix.css">
   <link rel="stylesheet" href="css/whatsapp-button.css">
     <link rel="stylesheet" href="css/chatbot.css">
+  <link rel="stylesheet" href="css/responsive-mobile.css">
+  <link rel="stylesheet" href="css/mobile-navigation.css">
 </head>
 <body>
     <div class="card">
@@ -68,41 +70,7 @@
         <div id="mensaje" class="success" style="display: none;">Carrito limpiado correctamente.</div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mostrar contenido actual del carrito
-            mostrarInfoCarrito();
-            
-            // Botón limpiar
-            document.getElementById('limpiar').addEventListener('click', function() {
-                localStorage.removeItem('carrito');
-                document.getElementById('mensaje').style.display = 'block';
-                mostrarInfoCarrito();
-            });
-            
-            // Botón volver
-            document.getElementById('volver').addEventListener('click', function() {
-                window.location.href = 'index.html';
-            });
-        });
-        
-        function mostrarInfoCarrito() {
-            const carritoInfo = document.getElementById('carrito-info');
-            const carrito = localStorage.getItem('carrito');
-            
-            if (!carrito) {
-                carritoInfo.textContent = "No hay información de carrito en localStorage.";
-                return;
-            }
-            
-            try {
-                const carritoObj = JSON.parse(carrito);
-                carritoInfo.textContent = JSON.stringify(carritoObj, null, 2);
-            } catch (e) {
-                carritoInfo.textContent = "Error al analizar carrito: " + e.message;
-            }
-        }
-    </script>
+    <script src="js/limpiar-carrito-inline.js"></script>
     <script src="./js/image-size-fix.js"></script>
   
   <!-- Script unificado de carrito -->
@@ -114,5 +82,6 @@
     </a>
   <script src="js/aplicar-whatsapp-all-pages.js"></script>
   <script src="js/chatbot.js"></script>
+  <script src="js/mobile-navigation.js"></script>
 </body>
 </html>
