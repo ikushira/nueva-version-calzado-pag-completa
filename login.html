@@ -22,7 +22,9 @@
   </style>
     <link rel="stylesheet" href="./css/image-size-fix.css">
   <link rel="stylesheet" href="css/carrito-imagen-fix.css">
-  </head>
+    <link rel="stylesheet" href="css/whatsapp-button.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+</head>
 <body>
   <div class="login-container">
     <h2 id="form-title">Iniciar sesión</h2>
@@ -112,13 +114,33 @@
         errorMsg.textContent = 'El correo ya está registrado.';
         return;
       }
+      // Guardar usuario en la lista de usuarios
       users.push({ name, email, pass });
       saveUsers(users);
+
+      // Crear perfil básico del usuario
+      const perfilBasico = {
+        nombre: name.split(' ')[0] || '',
+        apellido: name.split(' ').slice(1).join(' ') || '',
+        email: email,
+        boletin: false
+      };
+      
+      // Guardar en el registro de usuarios
+      let usuariosRegistrados = JSON.parse(localStorage.getItem('usuariosRegistrados') || '[]');
+      usuariosRegistrados.push(perfilBasico);
+      localStorage.setItem('usuariosRegistrados', JSON.stringify(usuariosRegistrados));
+
+      // Guardar usuario activo y redireccionar
+      localStorage.setItem('usuarioActivo', JSON.stringify({
+        name: name,
+        email: email
+      }));
+
       errorMsg.style.color = '#388e3c';
-      errorMsg.textContent = '¡Registro exitoso! Ahora puedes iniciar sesión.';
+      errorMsg.textContent = '¡Registro exitoso! Redirigiendo a tu perfil...';
       setTimeout(() => {
-        showLogin.onclick();
-        errorMsg.style.color = '';
+        window.location.href = 'cuenta.html';
       }, 1500);
     };
 
@@ -132,7 +154,15 @@
       if (user) {
         errorMsg.style.color = '#388e3c';
         errorMsg.textContent = '¡Inicio de sesión exitoso!';
-        // Aquí puedes redirigir o mostrar contenido exclusivo
+        // Guardar información del usuario activo
+        localStorage.setItem('usuarioActivo', JSON.stringify({
+          name: user.name,
+          email: user.email
+        }));
+        // Redirigir a la página de perfil después de un breve delay
+        setTimeout(() => {
+          window.location.href = 'cuenta.html';
+        }, 1000);
       } else {
         errorMsg.style.color = '';
         errorMsg.textContent = 'Correo o contraseña incorrectos.';
@@ -145,5 +175,12 @@
   <!-- Scripts de carrito ordenados -->
   <!-- Script unificado de carrito -->
   <script src="js/carrito-simplificado.js"></script>
+
+    <!-- WhatsApp flotante -->
+    <a href="https://wa.me/57XXXXXXXXXX" class="whatsapp-float" target="_blank" rel="noopener">
+      <img src="assets/img/whatsapp.svg" alt="WhatsApp">
+    </a>
+  <script src="js/aplicar-whatsapp-all-pages.js"></script>
+  <script src="js/chatbot.js"></script>
 </body>
 </html>
