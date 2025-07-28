@@ -4,12 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mundo Calzado | Tienda de Calzado</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/standardized-cards.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/new-colors.css">
+  <link rel="stylesheet" href="css/enhanced-shopping.css">
   <link rel="stylesheet" href="css/novedades-carousel.css">
   <link rel="stylesheet" href="css/carrito.css">
+  <link rel="stylesheet" href="css/carrito-enhanced.css">
+  <link rel="stylesheet" href="css/carrito-imagen-fix.css">
+  <link rel="stylesheet" href="css/carrito-fix-adicional.css">
   <link rel="stylesheet" href="css/carrusel-talla-modal.css">
+  <link rel="stylesheet" href="css/whatsapp-button.css">
+  <link rel="stylesheet" href="css/footer-enhanced.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/image-size-fix.css">
 </head>
 <body>
   <!-- Modal selector de talla para carrusel -->
@@ -34,10 +44,10 @@
     </div>
   </div>
   <!-- Barra superior con promoción y accesos rápidos -->
-  <div class="top-bar blue-theme">
+  <div class="top-bar red-theme">
     <div class="promo">
-      <span class="promo-strong">30% OFF 2DO PAR</span>
-      <span class="promo-timer"><i class="fa-regular fa-clock"></i> 34:09 ÚLTIMAS HORAS</span>
+      <span class="promo-strong"><i class="fa-solid fa-fire"></i> POR COMPRA DE 2 PARES EN ADELANTE, ENVIO GRATIS!!!</span>
+      <span class="promo-timer"><i class="fa-regular fa-clock"></i> APROVECHA ESTA OPORTUNIDAD!</span>
     </div>
     <div class="top-links">
       <a href="#"><i class="fa-regular fa-envelope"></i> Contáctanos</a>
@@ -48,7 +58,7 @@
   </div>
 
   <!-- Encabezado principal con logo, buscador y accesos rápidos (estilo bosquejo de Niños) -->
-  <header class="main-header blue-theme">
+  <header class="main-header red-theme">
     <div class="logo">MUNDO CALZADO</div>
     <input type="text" class="search-bar" id="main-search" placeholder="¿Qué zapatos estás buscando?">
     <div class="header-actions">
@@ -63,7 +73,7 @@
       </button>
     </div>
   </header>
-  <!-- Modal Carrito de Compras -->
+    <!-- Modal Carrito de Compras -->
   <div id="modal-carrito" class="modal-carrito oculto">
     <div class="modal-carrito-content">
       <div class="modal-carrito-header">
@@ -74,20 +84,24 @@
         <!-- Aquí se mostrarán los productos del carrito -->
       </div>
       <div id="carrito-vacio" class="carrito-vacio">
-        <img src="assets/img/box-empty.svg" alt="Carrito vacío" class="carrito-vacio-img">
+        <!-- Usamos un icono visual para representar el carrito vacío -->
+        <div class="carrito-vacio-icon">
+          <i class="fa-solid fa-box-open fa-4x carrito-vacio-icon-color"></i>
+        </div>
         <p class="carrito-vacio-txt">Tu carrito está vacío</p>
         <p class="carrito-vacio-desc">Aún no tienes artículos en tu carrito de compra.</p>
-        <button id="btn-elegir-productos" class="btn-elegir-productos">Elegir productos</button>
+        <button id="btn-elegir-productos" class="btn-elegir-productos"><i class="fa-solid fa-shoe-prints"></i> Explorar productos</button>
       </div>
       <div id="carrito-total" class="carrito-total oculto">
         <span>Total: $<span id="carrito-total-precio">0</span></span>
-        <button id="btn-finalizar-compra" class="btn-finalizar-compra">Finalizar compra</button>
+        <button id="btn-finalizar-compra" class="btn-finalizar-compra"><i class="fa-solid fa-check"></i> IR A PAGAR</button>
       </div>
     </div>
   </div>
+  </div>
 
   <!-- Menú de navegación principal -->
-  <nav class="main-nav blue-theme">
+  <nav class="main-nav red-theme">
     <ul>
       <li><a href="nuevos.html">Nuevos</a></li>
       <li><a href="mujeres.html">Mujeres</a></li>
@@ -272,11 +286,25 @@
 
   <link rel="stylesheet" href="css/guia-tallas-modal.css">
   <script src="js/guia-tallas-modal.js"></script>
-  <script src="js/carrito.js"></script>
+  <script src="js/carrusel-talla-modal.js"></script>
+  
+  <script src="js/tallas.js"></script>
+  <script src="js/diagnostico-tallas.js"></script>
   <script src="js/secciones_js/Carrusel2_fotos.js"></script>
   <!-- Script para funcionalidades JS -->
   <script src="js/script.js"></script>
   <script src="js/novedades-carousel.js"></script>
   <script src="js/busqueda.js"></script>
+    <script src="./js/image-size-fix.js"></script>
+  
+
+  
+  
+
+  
+  <!-- Script unificado de carrito -->
+  <script src="js/carrito-simplificado.js"></script>
+  <!-- Script para corregir estilos del carrito -->
+  <script src="js/carrito-estilo-fix.js"></script>
 </body>
 </html>

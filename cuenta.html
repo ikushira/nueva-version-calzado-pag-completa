@@ -4,17 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cuenta - Calzado Valencia</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/standardized-cards.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/new-colors.css">
+  <link rel="stylesheet" href="css/enhanced-shopping.css">
     <link rel="stylesheet" href="css/novedades-carousel.css">
     <link rel="stylesheet" href="css/cuenta.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/carrito.css">
+  <link rel="stylesheet" href="css/carrito-imagen-fix.css">
+    <link rel="stylesheet" href="css/whatsapp-button.css">
+  <link rel="stylesheet" href="css/footer-enhanced.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/image-size-fix.css">
 </head>
 <body class="cuenta-page">
     <!-- Barra superior con promoción y accesos rápidos -->
-    <div class="top-bar blue-theme">
+    <div class="top-bar red-theme">
       <div class="promo">
-        <span class="promo-strong">30% OFF 2DO PAR</span>
+        <span class="promo-strong"><i class="fa-solid fa-fire"></i> 30% OFF 2DO PAR</span>
         <span class="promo-timer"><i class="fa-regular fa-clock"></i> 34:09 ÚLTIMAS HORAS</span>
       </div>
       <div class="top-links">
@@ -25,16 +34,49 @@
       </div>
     </div>
     <!-- Encabezado principal con logo, buscador y accesos rápidos -->
-    <header class="main-header blue-theme">
+    <header class="main-header red-theme">
       <div class="logo">MUNDO CALZADO</div>
       <input type="text" class="search-bar" id="main-search" placeholder="¿Qué zapatos estás buscando?">
       <div class="header-actions">
-        <a href="login.html"><i class="fa-regular fa-user"></i> Iniciar sesión</a>
-        <a href="#"><i class="fa-solid fa-cart-shopping"></i> Carrito de compras</a>
+        <a href="login.html" class="header-login">
+          <i class="fa-regular fa-user"></i>
+          <span>Iniciar sesión</span>
+        </a>
+        <button id="btn-carrito" class="btn-carrito">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>Carrito de compras</span>
+          <span id="carrito-cantidad" class="carrito-cantidad">0</span>
+        </button>
       </div>
     </header>
+      <!-- Modal Carrito de Compras -->
+  <div id="modal-carrito" class="modal-carrito oculto">
+    <div class="modal-carrito-content">
+      <div class="modal-carrito-header">
+        <span class="modal-carrito-title"><i class="fa-solid fa-cart-shopping"></i> MI CARRITO</span>
+        <button id="cerrar-carrito" class="cerrar-carrito">&times;</button>
+      </div>
+      <div id="carrito-lista" class="carrito-lista">
+        <!-- Aquí se mostrarán los productos del carrito -->
+      </div>
+      <div id="carrito-vacio" class="carrito-vacio">
+        <!-- Usamos un icono visual para representar el carrito vacío -->
+        <div class="carrito-vacio-icon">
+          <i class="fa-solid fa-box-open fa-4x carrito-vacio-icon-color"></i>
+        </div>
+        <p class="carrito-vacio-txt">Tu carrito está vacío</p>
+        <p class="carrito-vacio-desc">Aún no tienes artículos en tu carrito de compra.</p>
+        <button id="btn-elegir-productos" class="btn-elegir-productos"><i class="fa-solid fa-shoe-prints"></i> Explorar productos</button>
+      </div>
+      <div id="carrito-total" class="carrito-total oculto">
+        <span>Total: $<span id="carrito-total-precio">0</span></span>
+        <button id="btn-finalizar-compra" class="btn-finalizar-compra">Ir a pagar</button>
+      </div>
+    </div>
+  </div>
+    </div>
     <!-- Menú de navegación principal -->
-    <nav class="main-nav blue-theme">
+    <nav class="main-nav red-theme">
       <ul>
         <li><a href="nuevos.html">Nuevos</a></li>
         <li><a href="mujeres.html">Mujeres</a></li>
@@ -203,5 +245,9 @@ document.addEventListener('DOMContentLoaded', function() {
     <script src="js/script.js"></script>
     <script src="js/novedades-carousel.js"></script>
     <script src="js/busqueda.js"></script>
+    <script src="./js/image-size-fix.js"></script>
+  <script src="js/carrito-correccion-final.js"></script>
+  <script src="js/carrito-tarjetas-fix.js"></script>
+  <script src="js/diagnostico-carrito-tarjetas.js"></script>
 </body>
 </html>

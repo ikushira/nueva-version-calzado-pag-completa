@@ -57,7 +57,8 @@
   cursor: pointer;
   transition: border 0.18s, background 0.18s, color 0.18s;
 }
-.carrusel-talla-btn.selected {
+.carrusel-talla-btn.selected,
+.carrusel-talla-btn.seleccionada {
   border: 2px solid #d21c32;
   background: #fff;
   color: #d21c32;

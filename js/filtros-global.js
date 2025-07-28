@@ -6,62 +6,102 @@ document.addEventListener('DOMContentLoaded', function() {
   var filtroOverlay = document.getElementById('filtroOverlay');
 
   function openSidebar() {
+    if (!filtroSidebar || !filtroOverlay) return; // Verificar que existan los elementos
+    
     filtroSidebar.style.left = '0';
     filtroSidebar.style.zIndex = '1300';
     filtroOverlay.style.display = 'block';
     filtroOverlay.style.zIndex = '1200';
     document.body.style.overflow = 'hidden';
-    openFiltroBtn.classList.add('active');
+    
+    // Solo modificar la clase si el botón existe
+    if (openFiltroBtn) {
+      openFiltroBtn.classList.add('active');
+    }
+    
     // Enfocar el primer elemento del sidebar para accesibilidad
     setTimeout(function() {
       var firstInput = filtroSidebar.querySelector('input,button,select,textarea,a');
       if(firstInput) firstInput.focus();
     }, 200);
   }
+  
   function closeSidebar() {
+    if (!filtroSidebar || !filtroOverlay) return; // Verificar que existan los elementos
+    
     filtroSidebar.style.left = '-100%';
     filtroSidebar.style.zIndex = '';
     filtroOverlay.style.display = 'none';
     filtroOverlay.style.zIndex = '';
     document.body.style.overflow = '';
-    openFiltroBtn.classList.remove('active');
+    
+    // Solo modificar la clase si el botón existe
+    if (openFiltroBtn) {
+      openFiltroBtn.classList.remove('active');
+    }
   }
 
-  openFiltroBtn.onclick = function() {
-    if (filtroSidebar.style.left === '0px' || filtroSidebar.style.left === '0') {
-      closeSidebar();
-    } else {
-      openSidebar();
-    }
-  };
-  document.getElementById('closeFiltro').onclick = closeSidebar;
-  filtroOverlay.onclick = closeSidebar;
+  // Solo agregar el evento onclick si el botón existe
+  if (openFiltroBtn) {
+    openFiltroBtn.onclick = function() {
+      if (filtroSidebar.style.left === '0px' || filtroSidebar.style.left === '0') {
+        closeSidebar();
+      } else {
+        openSidebar();
+      }
+    };
+  }
+  // Asignar onclick solo si los elementos existen
+  const closeBtn = document.getElementById('closeFiltro');
+  if (closeBtn) {
+    closeBtn.onclick = closeSidebar;
+  }
+  
+  if (filtroOverlay) {
+    filtroOverlay.onclick = closeSidebar;
+  }
   
   // Función para desplegar/contraer submenús
   window.toggleFiltroSub = function(id) {
-    var groupTitle = event.currentTarget;
+    // Verificar si se llamó desde un evento o directamente
+    var groupTitle;
+    if (event && event.currentTarget) {
+      groupTitle = event.currentTarget;
+    } else {
+      // Si se llamó programáticamente, buscar el título correspondiente
+      groupTitle = document.querySelector(`.filtro-group-title-sketch[onclick*="toggleFiltroSub('${id}')"]`);
+    }
+    
     var el = document.getElementById('filtro-' + id);
-    var icon = groupTitle.querySelector('i.fa-angle-down');
+    if (!el) return; // Salir si no se encuentra el elemento
+    
+    var icon = groupTitle ? groupTitle.querySelector('i.fa-angle-down') : null;
     
     if (el.style.display === 'none' || el.style.display === '') {
       el.style.display = 'block';
-      groupTitle.classList.add('active');
+      if (groupTitle) groupTitle.classList.add('active');
       if (icon) icon.style.transform = 'rotate(180deg)';
     } else {
       el.style.display = 'none';
-      groupTitle.classList.remove('active');
+      if (groupTitle) groupTitle.classList.remove('active');
       if (icon) icon.style.transform = '';
     }
   };
 
   // Inicializar el primer grupo como activo (abierto)
   const primerGrupo = document.querySelector('.filtro-group-title-sketch');
-  if (primerGrupo) {
-    const primerGrupoId = primerGrupo.getAttribute('onclick').match(/toggleFiltroSub\('(.+?)'\)/)[1];
-    document.getElementById('filtro-' + primerGrupoId).style.display = 'block';
-    primerGrupo.classList.add('active');
-    const icon = primerGrupo.querySelector('i.fa-angle-down');
-    if (icon) icon.style.transform = 'rotate(180deg)';
+  if (primerGrupo && primerGrupo.getAttribute('onclick')) {
+    const match = primerGrupo.getAttribute('onclick').match(/toggleFiltroSub\('(.+?)'\)/);
+    if (match && match[1]) {
+      const primerGrupoId = match[1];
+      const filtroElement = document.getElementById('filtro-' + primerGrupoId);
+      if (filtroElement) {
+        filtroElement.style.display = 'block';
+        primerGrupo.classList.add('active');
+        const icon = primerGrupo.querySelector('i.fa-angle-down');
+        if (icon) icon.style.transform = 'rotate(180deg)';
+      }
+    }
   }
 
   // Funcionalidad para el botón de ordenamiento
@@ -114,22 +154,28 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Redirección global al hacer click en cualquier filtro
-  document.querySelectorAll('.filtro-link').forEach(function(label) {
-    label.addEventListener('click', function(e) {
-      if (e.target.tagName === 'INPUT') return;
-      var filtro = label.getAttribute('data-filtro');
-      var found = false;
-      var nodes = document.querySelectorAll('.catalogo-container *');
-      nodes.forEach(function(node) {
-        if (!found && node.textContent && node.textContent.toLowerCase().includes(filtro.toLowerCase())) {
-          node.scrollIntoView({behavior:'smooth', block:'center'});
-          node.classList.add('filtro-highlight');
-          setTimeout(function(){ node.classList.remove('filtro-highlight'); }, 1200);
-          found = true;
+  const filtroLinks = document.querySelectorAll('.filtro-link');
+  if (filtroLinks && filtroLinks.length > 0) {
+    filtroLinks.forEach(function(label) {
+      label.addEventListener('click', function(e) {
+        if (e.target.tagName === 'INPUT') return;
+        var filtro = label.getAttribute('data-filtro');
+        if (!filtro) return;
+
+        var found = false;
+        var nodes = document.querySelectorAll('.catalogo-container *');
+        if (nodes && nodes.length > 0) {
+          nodes.forEach(function(node) {
+            if (!found && node.textContent && node.textContent.toLowerCase().includes(filtro.toLowerCase())) {
+              node.scrollIntoView({behavior:'smooth', block:'center'});
+              node.classList.add('filtro-highlight');
+              setTimeout(function(){ node.classList.remove('filtro-highlight'); }, 1200);
+              found = true;
+            }
+          });
         }
-      });
       
-      if (!found) {
+        if (!found) {
         // Lógica de redirección global
         var secciones = [
           {nombre: 'hombres', archivo: 'hombres.html'},
@@ -179,8 +225,9 @@ document.addEventListener('DOMContentLoaded', function() {
           window.location.href = destino.archivo + '?filtro=' + encodeURIComponent(filtro);
         }
       }
+      });
     });
-  });
+  }
 
   // Verificar si hay parámetro de filtro en la URL
   function checkUrlFilterParam() {
@@ -195,9 +242,17 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Abrir el menú correspondiente
             const parentGroup = label.closest('.filtro-group-list-sketch');
-            if (parentGroup && parentGroup.style.display === 'none') {
-              const id = parentGroup.id.replace('filtro-', '');
-              toggleFiltroSub(id);
+            if (parentGroup) {
+              if (parentGroup.style.display === 'none' || parentGroup.style.display === '') {
+                try {
+                  const id = parentGroup.id.replace('filtro-', '');
+                  if (window.toggleFiltroSub) {
+                    window.toggleFiltroSub(id);
+                  }
+                } catch (e) {
+                  console.log('Error al abrir filtro:', e);
+                }
+              }
             }
           }
         });

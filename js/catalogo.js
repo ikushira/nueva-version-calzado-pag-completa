@@ -126,7 +126,9 @@ document.addEventListener('DOMContentLoaded', function() {
           // Si es la sección de marcas, solo muestra la imagen y el nombre personalizado
           if (catalogo.id === 'catalogo-marcas') {
             card.innerHTML = `
-              <img src="${imgObj.src}" alt="${imgObj.nombre}" loading="lazy" class="marca-img" />
+              <div class="img-container">
+                <img src="${imgObj.src}" alt="${imgObj.nombre}" loading="lazy" class="marca-img" />
+              </div>
               <div class="producto-info">
                 <h3 class="marca-nombre">${imgObj.nombre}</h3>
               </div>
@@ -136,7 +138,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (catalogo.id === 'catalogo-accesorios') {
               card.innerHTML = `
                 ${etiquetas}
-                <img src="${imgObj}" alt="${catalogo.nombre} ${idx+1}" loading="lazy" />
+                <div class="img-container">
+                  <img src="${imgObj}" alt="${catalogo.nombre} ${idx+1}" loading="lazy" />
+                </div>
                 <div class="producto-info">
                   <h3>${catalogo.nombre} ${idx+1}</h3>
                   ${catalogo.precio ? `<p class="producto-precio">$${catalogo.precio.toLocaleString('es-CO')}</p>` : ''}
@@ -146,7 +150,9 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
               card.innerHTML = `
                 ${etiquetas}
-                <img src="${imgObj}" alt="${catalogo.nombre} ${idx+1}" loading="lazy" />
+                <div class="img-container">
+                  <img src="${imgObj}" alt="${catalogo.nombre} ${idx+1}" loading="lazy" />
+                </div>
                 <div class="producto-info">
                   <h3>${catalogo.nombre} ${idx+1}</h3>
                   ${catalogo.precio ? `<p class="producto-precio">$${catalogo.precio.toLocaleString('es-CO')}</p>` : ''}
@@ -180,7 +186,9 @@ document.addEventListener('DOMContentLoaded', function() {
           if (!esMarcas && catalogo.id !== 'catalogo-marcas') etiquetas += '<span class="etiqueta-envio">*ENVÍO GRATIS <i class="fa-solid fa-rocket"></i></span>';
           card.innerHTML = `
             ${etiquetas}
-            <img src="assets/img/${i}.jpeg" alt="${catalogo.nombre} ${i}" loading="lazy" />
+            <div class="img-container">
+              <img src="assets/img/${i}.jpeg" alt="${catalogo.nombre} ${i}" loading="lazy" />
+            </div>
             <div class="producto-info">
               <h3>${catalogo.nombre} ${i}</h3>
               ${catalogo.precio ? `<p class="producto-precio">$${catalogo.precio.toLocaleString('es-CO')}</p>` : ''}
@@ -248,9 +256,10 @@ document.addEventListener('DOMContentLoaded', function() {
             if (typeof cambiarImagenGuiaTallas === 'function') cambiarImagenGuiaTallas('medida');
           }
         }
-        // Selección visual de talla
+        // Nota: La selección visual de talla ahora se maneja en tallas.js
+        // Dejamos este código por compatibilidad con versiones anteriores
         if (e.target.classList.contains('talla-btn')) {
-          tallaBtns = e.target.parentElement.querySelectorAll('.talla-btn');
+          const tallaBtns = e.target.parentElement.querySelectorAll('.talla-btn');
           tallaBtns.forEach(btn => btn.classList.remove('selected', 'active'));
           e.target.classList.add('selected');
         }
